@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* Gallery styles */
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 70px;
+            margin-left: 70px;
+            margin-right: 50px;
+            padding: 30px;
+        }
+        .gallery img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            cursor: pointer;
+            border-radius: 5px;
+            background: white;
+            padding: 25px;
+            box-shadow: 0.5px 0.5px 5px 0.5px rgb(200, 172, 172);
+            margin-left: 20px;
+        }
+#imageTitle{
+    font-size: 50px;
+    margin: 0;
+    padding: 0;
+    transform: translate(-10px,100px);
+}
+        /* Details container styles */
+        #detailsContainer {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #detailsContainer img {
+            margin-top: 50px;
+            max-width: 300px;
+            border-radius: 5px;
+        }
+
+        .suggestedImageContainer {
+            /* margin-top: 10px; */
+            padding: 10px;
+            border-radius: 5px;
+            box-sizing: border-box;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(21, 21, 21, 0.249);
+            background-color: #fff;
+            box-shadow: 0.5px 0.5px 5px 0.5px rgb(162, 145, 145);
+            margin: 20px;
+        }
+
+        .suggestedImageContainer img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            margin-right: 10px;
+            border-radius: 3px; 
+            transition: transform 0.3s ease-out;
+}
+#selectedImage{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin: 0;
+}
+.suggestedImageContainer:hover {
+    transform: translateY(-5px);
+}
+.suggestedImageContainer img:hover {
+    transform: translateY(-5px);
+}
+
+        .suggestedImageContainer .details {
+            text-align: left;
+            margin-top: 5px;
+        }
+        /* Add this to your existing styles or create a new style section */
+
+button.bookNowButton {
+    background-color: #690505;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button.bookNowButton:hover {
+    background-color: #45a049;
+}
+#detailsContainer button{
+    padding: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  border: 2px solid #3498db;
+  color: #3498db;
+  background-color: #fff;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+  display: block;
+  margin: 0 auto;
+}
+#detailsContainer button:hover{
+  background-color: #3498db;
+  color: #fff;
+}
+.ev-bar .ev-button {
+  padding: 16px;
+  margin: 0;
+  
+}
+/* Ev.CSS 4.15 December 2020 by Jan Egil and Borge Refsnes */
+html{
+  box-sizing:border-box;
+}
+*,*:before,*:after{
+  box-sizing:inherit;
+}
+/* Extract from normalize.css by Nicolas Gallagher and Jonathan Neal git.io/normalize */
+
+h1,h2,h3,h4,h5,h6{
+    font-family:"Segoe UI",Arial,sans-serif;
+    font-weight:400;
+    margin: 0;
+}
+.ev-wide{
+    letter-spacing:4px;
+}
+
+.ev-top {
+      position: relative;
+      width: 100%;
+      z-index: 1000;
+    }
+
+/* Style the rest of your navigation bar as needed */
+.ev-bar .ev-button {
+  padding: 16px;
+}
+
+/* Your other styles here */
+
+.ev-btn,.ev-button{
+    border:none;
+    display:inline-block;
+    padding:8px 16px;
+    vertical-align:middle;
+    overflow:hidden;
+    text-decoration:none;
+    color:inherit;
+    background-color:inherit;
+    text-align:center;
+    cursor:pointer;
+    white-space:nowrap;
+}
+
+
+.ev-sidebar{
+    height:100%;
+    width:200px;
+    background-color:rgb(255, 255, 255);
+    position:fixed!important;
+    z-index:1;
+    overflow:auto;
+}
+
+
+.ev-bar-block .ev-bar-item{
+    width:100%;
+    display:block;
+    padding:8px 16px;
+    text-align:left;
+    border:none;
+    white-space:normal;
+    float:none;
+    outline:0;
+    border-bottom: 1px solid;
+}
+
+@media (max-width:1205px){
+    .ev-auto{
+        max-width:95%;
+    }
+}
+@media (max-width:600px)
+{
+  .ev-modal-content
+    {
+        margin:0 10px;width:auto!important;
+    }
+.ev-hide-small{
+    display:none!important;
+}
+}
+@media (max-width:768px){
+    .ev-modal-content{
+        width:500px;
+    }
+    .ev-modal{
+        padding-top:50px;
+    }
+}
+@media (min-width:993px){
+    .ev-modal-content{
+        width:900px;
+    }
+    .ev-hide-large{
+        display:none!important;
+    }
+    .ev-sidebar.ev-collapse{
+        display:block!important;
+    
+    }
+}
+@media (max-width:992px) and (min-width:601px)
+{
+    .ev-hide-medium{
+        display:none!important;
+    }
+}
+@media (max-width:992px){
+    .ev-sidebar.ev-collapse{
+        display:none;
+    }
+    .ev-main{
+        margin-left:0!important;
+        margin-right:0!important;
+    }
+    .ev-auto{
+        max-width:100%;
+    }
+}
+
+.ev-card,.ev-card-2{
+    box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+}
+
+.ev-animate-left{
+    position:relative;
+    animation:ev-animateleft 0.4s;
+}
+@keyframes ev-animateleft{
+    from{
+        left:-300px;opacity:0;
+    }
+     to{
+        left:0;opacity:1;
+    }
+}
+
+
+
+.ev-right {
+   float: right !important;
+   }
+.ev-button:hover { 
+  color: #000 !important;
+   background-color: #ccc !important;
+   }
+.ev-transparent, .ev-hover-none:hover { background-color: transparent !important; }
+.ev-hover-none:hover { box-shadow: none !important; }
+
+.ev-black,
+.ev-hover-black:hover {
+  color: #fff !important;
+  background-color: #000 !important;
+}
+.ev-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)), url('../../images_of_ev/bg2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.ev-top {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.ev-bar {
+  background-color: white; /* Make the navbar transparent */
+  transition: background-color 0.3s ease; /* Add transition for a smooth effect */
+}
+
+.ev-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white; /* Adjust the color and opacity as needed */
+  z-index: -1;
+}
+.ev-hidden {
+            display: none;
+        }
+
+        .ev-frontpage {
+  color: white;
+  text-align:left;
+  margin-top: 0;
+ 
+}
+
+.ev-frontpage h2 {
+  font-family:'Courier New', Courier, monospace;
+  font-size: 60px;
+  margin-left:40px;
+  display: flex;
+  font-weight: 100;
+  text-shadow: 3px 3px 2px rgb(32, 28, 28);
+}
+.ev-frontpage h1{
+  font-family: 'Anonymous Pro', monospace;
+  font-family: 'Roboto', sans-serif;
+  font-size: 150px;
+  font-weight: 600;
+  line-height: 70px;
+  margin-left: 0px;
+  text-shadow: 2px 10px 2px black;
+}
+.ev-frontpage p{
+  font-family: 'Courier New', Courier, monospace;
+  margin:50px 0 0 50px;
+}
+.ev-frontpage button{
+  border: 1px solid white;
+  align-items: center;
+  text-align: center;
+  margin-left: 130px;
+  padding: 10px;
+  letter-spacing: 3px;
+  background-color: #ffffffbe;
+  color: blue;
+  border-radius: 2px;
+  box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.374);
+}
+.ev-frontpage button:hover{
+  background-color: transparent;
+  border-radius: 1px solid white;
+  box-shadow: none;
+  color: white;
+}
+
+
+@media screen and (max-width: 768px) {
+  .ev-frontpage h1 {
+    font-size: 100px;
+  }
+
+  .ev-frontpage p {
+    margin: 20px 0 0 20px;
+  }
+
+  .ev-frontpage button {
+    margin-left: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .ev-frontpage h1 {
+    font-size: 70px;
+    line-height: 50px;
+  }
+
+  .ev-frontpage h2 {
+    font-size: 40px;
+    margin-left: 20px;
+  }
+
+  .ev-frontpage p {
+    margin: 10px 0 0 10px;
+  }
+
+  .ev-frontpage button {
+    margin-left: 5px;
+    padding: 8px;
+  }
+}
+
+.banner {
+   display: flex;
+   position: relative;
+}
+.banner .inside-banner-text img{
+   width: 63vw;
+   height: 490px;
+   /* top: 50%;
+   left: 50%; */
+   transform: translate(30%,30%);
+}
+.banner-content .text{
+    font-size: 40px;
+    font-family: 'Times New Roman', Times, serif;
+    display: flex;
+    position: absolute;
+    left: 23%;
+    color: white;
+    top: 50%;
+}
+.banner-content .text1{
+    font-size: 30px;
+   font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    position: absolute;
+    left: 23%;
+    color: white;
+    top: 65%;
+    line-height: 45px;
+    font-weight: 600;
+}
+.banner-content .learn-more{
+    font-size: 20px;
+   font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    position: absolute;
+    left: 23%;
+    color: white;
+    top: 99%;
+}
+.banner-content .learn-more a{
+    all: unset;
+    font-size: 13px;
+    border: 1px solid white;
+    padding: 10px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+.banner-content .learn-more a:hover{
+    transform: scale(1.02);
+}
+.banner-content .learn-more a i{
+    margin-left: 10px;
+    width: 10px;
+    text-align: center;
+}
+.banner-content .text2{
+    font-size: 30px;
+   font-family:'Times New Roman', Times, serif;
+    display: flex;
+    position: absolute;
+    left: 65%;
+    color: white;
+    top: 107%;
+}
+.trusted-brnd{
+  margin-top: 150px;
+  overflow: scroll;
+}
+.trustiee{
+  font-family: 'Times New Roman', Times, serif;
+  font-size:2em;
+  text-transform: capitalize;
+  margin:0 0 10px 150px;
+  font-weight: 900;
+  text-decoration: 2px underline red;
+}
+
+.container2{
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    /* background: linear-gradient(rgba(0, 0, 0, 1.0), rgba(0, 0, 0, 0.5)), url('./ola-e-bike--768x512.jpg'); */
+    
+}
+
+.container2 img{
+    height: 250px;
+    width: auto;
+    transition: all 0.5s ease-in;
+    cursor: pointer;
+}
+.container2 img:hover{
+    transform: scale(1.02);
+}
+.container2 .body .details{
+    background: #29b1eb44;
+    position: relative;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.body1 .details{
+    background: rgba(227, 170, 64, 0.133) ;
+}
+.body2 .details{
+    background: rgba(255, 192, 203, 0.49);
+}
+ .vehicle-name{
+    font-family: 'Play', sans-serif;
+    text-align: center;
+    font-size: 33px;
+}
+.btn1{
+    all: unset;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    font-weight:20px;
+    margin-left: 20px;
+    border: 1px solid ;
+    padding: 2px;
+    border-radius: 0 10px;
+    background-color: #3db1e788;
+    box-shadow: 2px 2px 5px;
+}
+.body .details h4{
+    font-size: 15px;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    padding:15px;
+}
+.body1 .details h4{
+    font-size: 15px;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    padding: 24.2px;
+}
+.body2 .details h4{
+    font-size: 15px;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    padding: 24.2px;
+}
+.prize{
+    text-align: center;
+    font-size: 35px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif ;
+    margin-left: 50px;
+}
+.or{
+    font-size: 15px;
+}
+.emi{
+    font-size: 15px;
+    margin-left: 60px;
+}
+hr{
+    width: 80%;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.stars i{
+    margin-left: 50px;
+    line-height: 40px;
+}
+.explore-btn{
+    all: unset;
+    text-align: center;
+    border: 1px solid ;
+    padding-left: 20%; 
+     padding-right: 16.5%; 
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background: #6c6666;
+    color: rgb(233, 233, 241);
+    cursor: pointer;
+}
+.explore-btn1{
+  all: unset;
+    text-align: center;
+    border: 1px solid ;
+    padding-left: 34.2%; 
+     padding-right: 25%; 
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background: #6c6666;
+    color: rgb(233, 233, 241);
+    cursor: pointer;
+}
+.explore-btn2{
+  all: unset;
+    text-align: center;
+    border: 1px solid ;
+    padding-left: 38.2%; 
+     padding-right: 26.2%;  
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background: #6c6666;
+    color: rgb(233, 233, 241);
+    cursor: pointer;
+}
+footer {
+  background-color: #333; /* Light black background color */
+  color: #fff; /* Text color */
+  padding: 40px 20px; /* Padding for content */
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.quick-info,
+.footer-company,
+.footer-contact,
+.footer-logo {
+  flex: 1;
+  margin-bottom: 20px;
+}
+
+.footer-content h2 {
+  color: #d44b4b; /* Header text color */
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  text-transform: capitalize;
+}
+
+.footer-content ul {
+  list-style: none;
+  padding: 0;
+  display: block;
+}
+
+.footer-content li {
+  margin-bottom: 5px;
+  text-transform: capitalize;
+ 
+}
+
+.footer-content a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  text-transform: capitalize;
+}
+
+.footer-content a:hover {
+  text-decoration: underline;
+}
+
+.address,
+.mail,
+.ph-no {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.social-media {
+  font-size: 1.5em;
+}
+
+/* Additional styling for social media icons */
+i.fa-brands {
+  margin-right: 10px;
+}
+.footer-logo h1{
+  font-family: 'Anonymous Pro', monospace;
+}
+.info{
+  padding-left: 100px;
+  padding-right: 40px;
+  display: flex;
+  padding-top: 100px;
+}
+.info-content h2{
+font-family: 'Times New Roman', Times, serif;
+font-size: 28px;
+font-weight: 900;
+text-decoration: 2px underline red;
+}
+.info-content p{
+  font-family: serif;
+  font-size: 16px;
+  font-weight: 600;
+}
+.info-content li{
+  font-size: 16px;
+  font-family: serif;
+}
+    </style>
+    <title>Image Details</title>
+</head>
+<body>
+     <!-- Navbar (sit on top) -->
+<div class="ev-top">
+    <div class="ev-bar ev-white ev-card" id="myNavbar">
+      <a href="#home" class="ev-bar-item ev-button ev-wide">ELECTRORIDE</a>
+  
+      <!-- Right-sided navbar links -->
+      <div class="ev-right ev-hide-small">
+        <a href="index.html" class="ev-bar-item ev-button">HOME</a>
+  
+        <a href="gallery.html" class="ev-bar-item ev-button"><i class="fa fa-inr"></i>GALLERY&PRICING</a>
+        <a href="contact-form.html" class="ev-bar-item ev-button"><i class="fa fa-shopping-cart"></i> CONTACT-NOW</a>
+        <a href="feedback.html" class="ev-bar-item ev-button"><i class="fa fa-comment"></i>FEEDBACK</a>
+      </div>
+      <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+  
+      <a href="javascript:void(0)" class="ev-bar-item ev-button ev-right ev-hide-large ev-hide-medium" onclick="ev_open()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+  </div>
+  
+  <nav class="ev-sidebar ev-bar-block ev-black ev-card ev-animate-left ev-hide-medium ev-hide-large" style="display:none" id="mySidebar">
+    <a href="javascript:void(0)" onclick="ev_close()" class="ev-bar-item ev-button ev-large ev-padding-16">Close ×</a>
+    <a href="index.html" onclick="ev_close()" class="ev-bar-item ev-button">HOME</a>
+    <a href="gallery.html" onclick="ev_close()" class="ev-bar-item ev-button">GALLERY&PRICING</a>
+    <a href="book-now.html" onclick="ev_close()" class="ev-bar-item ev-button">BOOK NOW</a>
+    <a href="feedback.html" onclick="ev_close()" class="ev-bar-item ev-button">FEEDBACK</a>
+  </nav>
+  
+  <script>
+    // Modal Image Gallery
+    function onClick(element) {
+      document.getElementById("img01").src = element.src;
+      document.getElementById("modal01").style.display = "block";
+      var captionText = document.getElementById("caption");
+      captionText.innerHTML = element.alt;
+    }
+    
+    // Toggle between showing and hiding the sidebar when clicking the menu icon
+    var mySidebar = document.getElementById("mySidebar");
+    
+    function ev_open() {
+      if (mySidebar.style.display === 'block') {
+        mySidebar.style.display = 'none';
+      } else {
+        mySidebar.style.display = 'block';
+      }
+    }
+    
+    // Close the sidebar with the close button
+    function ev_close() {
+        mySidebar.style.display = "none";
+    }
+    function onClick(element) {
+            // Toggle the visibility of the navigation bar
+            var navbar = document.getElementById("myNavbar");
+            navbar.classList.toggle("ev-hidden");
+
+            document.getElementById("img01").src = element.src;
+            document.getElementById("modal01").style.display = "block";
+            var captionText = document.getElementById("caption");
+            captionText.innerHTML = element.alt;
+        }
+  </script>
+  
+<section class="ev-section">
+    <div class="ev-frontpage">
+      <h2>LET'S RIDE THE</h2>
+      <h1>FUTURE</h1>
+     <p> where innovation meets inspiration! At Electroride, <br>we believe in empowering your journey towards <br>a sustainable and thrilling ride into the future.<br> Our curated collection of electric bikes is more <br>than just a shopping experience; it's a commitment<br> to a greener planet and an electrifying lifestyle.<p>
+      <a href="contact-form.html"> <button class="ev-btn" >ENQUIRY NOW</button></a>
+    </div>
+  </section>  
+  <section>
+    <div class="companies">
+      <div class="avialble-companies">
+        <div class="description-abt-brands">
+          <h2>Electric Scooter Brands</h2>
+          <p>At BikeJunction, we're making it easier than ever to find your ideal electric scooter. With all the major brands available in one place, you can compare and contrast different models to find your ideal ride. We offer the widest selection of top electric scooter brands in India, like Ather, Bajaj, Hero,ola, TVS and more.  So explore and find electric scooters from the best electric scooter brands in India with <em>Electroride</em> today!</p>
+        </div>
+       
+      
+
+  <div class="gallery">
+    <!-- Example images, replace these with your image URLs -->
+    <img src="/images/Acer_8d21489a19.webp" alt="Acer" onclick="showDetails('', '/images/Acer_8d21489a19.webp', [
+        { url: 'https:/climatesamurai.com/wp-content/uploads/2023/10/Acer-MUVI-125-4G-E-Scooter.jpeg', name: ' Acer MUVI 125 4G', price: '₹99,999', mileage: '80 km per charge', topspeed: '75kmph',chargingtime:'4hrs',kerb:'96kg',battery:'3.38kwh',seat:'Not Specified',rated:'3kw' },
+        { url: 'https:/acerelectric.in/wp-content/uploads/2024/11/Image-8-1024x985.png', name: ' Acer CPX Pro', price: '₹2,10,000', mileage: '100 km per charge', topspeed: '105kmph',chargingtime:'3.5hrs',kerb:'143kg',battery:'2.7kwh',seat:'925mm',rated:'8kw' },
+        { url: 'https:/images.acer.com/is/image/acer/AcerES5_Product5-1?$Product-Cards-XL$', name: 'Acer ES Series 5(kick Scooter)', price: '~$650(approx.)', mileage: 'up to 60km', topspeed: '25kmph',chargingtime:'8hrs',kerb:'18.5kg',battery:'0.54kwh',seat:'Stand-up-Scooter',rated:'0.35kw' }
+    ])">
+
+ <img src="/images/ampere_by_greaves_logo_ee8f857a3a.webp" alt="ampere" onclick="showDetails('', '/images/ampere_by_greaves_logo_ee8f857a3a.webp', [
+{ url: 'https:/cdn.bikedekho.com/processedimages/ampere/v-48/source/v-485e58f638b5b1f.jpg', name: 'Ampere V48', price: '₹42,714', mileage: '50km per charge', topspeed: '25kmph',chargingtime:'10hrs',kerb:'84kg',battery:'0.96kwh',seat:'Not Specified',rated:'0.25kw' },
+{ url: 'https:/imgd.aeplcdn.com/1056x594/n/cw/ec/165683/reo-plus-left-front-three-quarter-4.png?isig=0&q=80&wm=3', name: 'Ampere Reo', price: '₹56,190', mileage: '70km per charge', topspeed: '25kmph',chargingtime:'6hrs',kerb:'68kg',battery:'1.3kwh',seat:'Not Specified',rated:'0.25kw' },
+{ url: 'https:/cdn.bikedekho.com/processedimages/ampere/zeal-ex/source/zeal-ex63e4a07cca268.jpg?imwidth=880', name: 'Ampere Zeal Ex', price: '₹86,690', mileage: '90km per charge', topspeed: '55kmph',chargingtime:'7hrs',kerb:'80kg',battery:'1.8kwh',seat:'Not Specified',rated:'1.2kw' },
+{ url: 'https:/cdn.bikedekho.com/processedimages/ampere/magnus-neo/source/magnus-neo67865b882e0bc.jpg', name: 'Ampere Maganus Neo', price: '₹79,999', mileage: '100km per charge', topspeed: '65kmph',chargingtime:'6hrs',kerb:'108kg',battery:'2.3kwh',seat:'Not Specified',rated:'1.5kw' },
+])">
+
+
+
+<img src="/images/ather_logo_9f858da381.webp" alt="Ather" onclick="showDetails('', '/images/ather_logo_9f858da381.webp', [
+{ url: 'https:/cdn.bikedekho.com/processedimages/ather-energy/2025-450s/source/2025-450s677cb6102fdd0.jpg', name: 'Ather 450S', price: '1,15,087', mileage: '122 km per charge', topspeed: '90kmph',chargingtime:'7.45hrs',kerb:'108kg',battery:'2.9kwh',seat:'780mm',rated:'5.4kw'},
+{ url: 'https:/cdn.bikedekho.com/processedimages/ather-energy/2025-450x/source/2025-450x677cb0f6f0a73.jpg', name: 'Ather 450X', price: '1,46,999', mileage: '126 km per charge', topspeed: '90kmph',chargingtime:'4.3hrs',kerb:'108kg',battery:'3.7kwh',seat:'780mm',rated:'6.2kw'},
+{ url: 'https:/imgd.aeplcdn.com/1056x594/n/cw/ec/167909/ather-450-apex-left-side-view85.jpeg?isig=0&wm=3&q=80', name: 'Ather 450 Apex', price: '1,89,841', mileage: '157 km per charge', topspeed: '100kmph',chargingtime:'5.45hrs',kerb:'111.6kg',battery:'3.7kwh',seat:'780mm',rated:'7kw'},
+{ url: 'https:/cdn.bikedekho.com/processedimages/ather-energy/family-scooter/source/family-scooter661391d259569.jpg', name: 'Ather Rizta', price: '1,09,999', mileage: '123 km per charge', topspeed: '80kmph',chargingtime:'6.4hrs',kerb:'119kg',battery:'4.3kwh',seat:'780mm',rated:'3.7kw'}
+])">
+
+
+<img src="/images/bajaj_logo_90f8c408ec.webp" alt="Bajaj" onclick="showDetails('', '/images/bajaj_logo_90f8c408ec.webp', [
+{ url: 'https:/www.chetak.com/-/media/chetakv2/content-image/image-series/2903_image.webp', name: 'Bajaj Chetak 2930', price: '1,15,001', mileage: '123 miles per charge', topspeed: '63kmph', chargingtime:'6hrs',kerb:'132kg',battery:'2.88kwh',seat:'760',rated:'4.2kw'},
+{ url: 'https:/www.chetak.com/-/media/chetakv2/content-image/image-series/3501_image.webp', name: 'Bajaj Chetak 3501', price: '1,34,500', mileage: '153 miles per charge', topspeed: '73kmph', chargingtime:'3hrs',kerb:'132kg',battery:'3.5kwh',seat:'760',rated:'4kw'},
+{ url: 'https:/www.chetak.com/-/media/chetakv2/content-image/image-series/3502_image.webp', name: 'Bajaj Chetak 3502', price: '1,22,500', mileage: '153 miles per charge', topspeed: '73kmph', chargingtime:'3.25hrs',kerb:'132kg',battery:'3.5kwh',seat:'760mm',rated:'4kw'},
+{ url: 'https:/www.chetak.com/-/media/chetakv2/chetak-3503/3503-logos/product-series-page-3503.webp', name: 'Bajaj Chetak 3503', price: '1,09,500', mileage: '151 miles per charge', topspeed: '63kmph', chargingtime:'3.25hrs',kerb:'132kg',battery:'3.5kwh',seat:'760',rated:'4kw'}
+])">
+
+
+
+<img src="/images/benlg_logo_b53cfcb132.webp" alt="Benlg" onclick="showDetails('', '/images/benlg_logo_b53cfcb132.webp', [
+{ url: 'https:/cdn.bikedekho.com/processedimages/benling-india/aura/source/aura63c510e885435.jpg', name: 'Benling Aura', price: '1.22lakh', mileage: '120km per charge', topspeed: '60kmph',chargingtime:'4hrs',kerb:'95kg',battery:'2.88kwh',seat:'1175mm',rated:'2.5kw' },
+{ url: 'https:/cdn.bikedekho.com/processedimages/benling-india/falcon/source/falcon63c5112f711c1.jpg', name: 'Benling Falcon', price: '69,540', mileage: '75km per charge', topspeed: '25kmph',chargingtime:'8hrs',kerb:'66kg',battery:'1.32kwh',seat:'Not Specified',rated:'0.25kw' },
+{ url: 'https:/cdn.bikedekho.com/processedimages/benling-india/kriti/source/kriti63c510d405b84.jpg', name: 'Benling Kriti', price: '64,151', mileage: '60km per charge', topspeed: '25kmph',chargingtime:'4hrs',kerb:'66kg',battery:'1.34kwh',seat:'Not Specified',rated:'0.25kw' },
+{ url: 'https:/cdn.bikedekho.com/processedimages/benling-india/believe/source/believe63c5106d3d7f2.jpg', name: 'Benling Believe', price: '97,520', mileage: '120km per charge', topspeed: '75kmph',chargingtime:'4hrs',kerb:'248kg(load capcity)',battery:'3.2kwh',seat:'Not Specified',rated:'3.2kw' }
+])">
+
+
+
+<img src="/images/bgauss_1378fea5b6.webp" alt="bgauss" onclick="showDetails('', '/images/bgauss_1378fea5b6.webp', [
+{ url: 'https:/m.media-amazon.com/images/I/51U+r4u0yGL.jpg', name: 'BGauss C12i', price: '1.05lakh', mileage: '85-123 miles per charge', topspeed: '62kmph',chargingtime:'4.3hrs',kerb:'106kg',battery:'3.2kwh',seat:'760mm',rated:'4.2kw'},
+{ url: 'https:/imgd.aeplcdn.com/1056x594/n/bw/models/colors/bgauss-select-model-white-1719377853600.png?q=80', name: 'BGauss RUV 350', price: '1.15lakh', mileage: '105-145 miles per charge', topspeed: '75kmph',chargingtime:'5.15hrs',kerb:'116kg',battery:'3.5kwh',seat:'770mm',rated:'4.5kw'}
+])">
+
+
+<img src="/images/bounce_infinity_logo_0cc9356aea.webp" alt="bounce" onclick="showDetails('', '/images/bounce_infinity_logo_0cc9356aea.webp', [
+{ url: 'https:/bounceinfinity.com/assets/images/bike3.png', name: 'Bounce infinity E1 plus', price: '1,15,650', mileage: '70 miles per charge', topspeed: '65kmph',chargingtime:'4hrs',kerb:'94kg',battery:'1.9kwh',seat:'780mm',rated:'1.5kw'},
+{ url: 'https:/bounceinfinity.com/assets/images/bike2.png', name: 'Bounce infinity E1 Standard', price: '1,18,125', mileage: '100 miles per charge', topspeed: '55kmph',chargingtime:'4hrs',kerb:'94kg',battery:'2.5kwh',seat:'780mm',rated:'1.5kw'},
+{ url: 'https:/bounceinfinity.com/assets/images/bike-black.png', name: 'Bounce infinity E1 Limited Edition', price: '1,25,615', mileage: '70 miles per charge', topspeed: '65kmph',chargingtime:'4hrs',kerb:'94kg',battery:'1.9kwh',seat:'780mm',rated:'1.5kw'}
+])">
+
+
+
+
+<img src="/images/download_1_10d938e7d6.webp" alt="komaki" onclick="showDetails('Komaki', '/images/download_1_10d938e7d6.webp', [
+{ url: 'https:/shop.komaki.in/wp-content/uploads/2024/05/Venice-Blue-1.jpg', name: 'Komaki Venice Sport', price: '1.18lakh', mileage: '70 miles per charge',topspeed:'70-80kmph' ,chargingtime:'6hrs',kerb:'90kg',battery:'dual battery',seat:'780mm',rated:'3kw'},
+{ url: 'https:/shop.komaki.in/wp-content/uploads/2025/01/Artboard-10.webp', name: 'Komaki SE Ultra ', price: '68,000', mileage: '60-70 miles per charge',topspeed:'45kmph', chargingtime:'6hrs',kerb:'70kg',battery:'3.0kwh',seat:'750mm',rated:'1kw' },
+{ url: 'https:/shop.komaki.in/wp-content/uploads/2024/05/Front-1.jpg', name: 'Komaki X4', price: '75,000', mileage: '80-100 miles per charge',topspeed:'60kmph', chargingtime:'6hrs',kerb:'90kg',battery:'3kwh',seat:'780mm',rated:'2kw' },
+{ url: 'https:/shop.komaki.in/wp-content/uploads/2024/05/Front-8.jpg', name: 'Komaki XGT KM', price: '56,890', mileage: '60-150 miles per charge',topspeed:'65kmph', chargingtime:'8hrs',kerb:'85kg',battery:'1.8kwh',seat:'760mm',rated:'2kw' },
+{ url: 'https:/shop.komaki.in/wp-content/uploads/2024/05/front-23.jpg', name: 'Komaki TN 95', price: '1,18lakh', mileage: '130-180 miles per charge',topspeed:'85kmph', chargingtime:'5hrs',kerb:'120kg',battery:'3.7kwh',seat:'870mm',rated:'5kw' },
+{ url: 'https:/shop.komaki.in/wp-content/uploads/2025/03/single-4.png', name: 'Komaki X3', price: '70,090', mileage: '80-100 miles per charge',topspeed:'60kmph', chargingtime:'6hrs',kerb:'85kg',battery:'3kwh',seat:'760mm',rated:'2kw' }
+])">
+
+
+
+
+<img src="/images/download_1_1_71b65c17b5.webp" alt="tunwal" onclick="showDetails('tunwal', '/images/download_1_1_71b65c17b5.webp', [
+{ url: 'https:/images.tractorjunction.com/Strom_Advance1_a81db072ad.png?format=webp&quality=40', name: 'Tunwal Storm Advance1', price: '1,56,133', mileage: '60 miles per charge',topspeed:'25kmph', chargingtime:'5hrs',kerb:'59kg',battery:'1.56kwh',seat:'730mm',rated:'0.25kw' },
+{ url: 'https:/media.zigcdn.com/media/model/2021/Oct/tunwal-sport63-mini-right-side-view_930x620.jpg', name: 'Tunwal Mini Sports 63', price: '49,990', mileage: '65 miles per charge',topspeed:'25kmph', chargingtime:'7hrs',kerb:'86kg',battery:'1.25kwh',seat:'780mm',rated:'0.25kw' },
+{ url: 'https:/media.zigcdn.com/media/model/2021/Oct/tunwal-mini-lithino-right-side-view_600x400.jpg', name: 'Tunwal Mini Lithino', price: '54,990', mileage: '65 miles per charge',topspeed:'25kmph', chargingtime:'7hrs',kerb:'60kg',battery:'1.25kwh',seat:'730mm',rated:'1.25kw' },
+{ url: 'https:/media.zigcdn.com/media/model/2021/Oct/tunwal-stromzx-right-side-view_600x400.jpg', name: 'Tunwal Storm ZX', price: '90,000', mileage: '75 miles per charge',topspeed:'25kmph', chargingtime:'8hrs',kerb:'75kg',battery:'1.56kwh',seat:'800mm',rated:'0.25kw' },
+{ url: 'https:/media.zigcdn.com/media/model/2021/Oct/tunwal-lithino-li-rt-right-side-view_600x400.jpg', name: 'Tunwal Lithino Li', price: '74,990', mileage: '110 miles per charge',topspeed:'25kmph', chargingtime:'5hrs',kerb:'58kg',battery:'2.58kwh',seat:'Not Specified',rated:'0.25kw' },
+{url: 'https:/media.zigcdn.com/media/model/2021/Oct/tunwal-sport63-mid-right-side-view_930x620.jpg', name: 'Tunwal Sport', price: '71,990', mileage: '70 miles per charge',topspeed:'25kmph', chargingtime:'7hrs',kerb:'58kg',battery:'1.56kwh',seat:'Not Specified',rated:'0.25kw' }
+
+
+])">
+
+
+
+
+<img src="/images/download_1_785c5f65c6.webp" alt="kabira mobility" onclick="showDetails('kabira', '/images/download_1_785c5f65c6.webp', [
+{ url: 'https:/cdn.bikedekho.com/processedimages/kabira-mobility/aetos-100/source/aetos-10060587b1ce4cf7.jpg', name: 'Aetos 100', price: '65,490', mileage: '110 miles per charge',topspeed:'24kmph', chargingtime:'8hrs',kerb:'69kg',battery:'1.6kwh',seat:'800mm',rated:'0.25kw' }, 
+{ url: 'https:/media.zigcdn.com/media/model/2021/Mar/right-side-view-934951198_930x620.jpg', name: 'Kollegio Plus', price: '65,490', mileage: ' 110miles per charge',topspeed:'25kmph', chargingtime:'8hrs',kerb:'80kg',battery:'2.1kwh',seat:'740mm',rated:'0.25kw' }, 
+{ url: 'https:/cdn.bikedekho.com/processedimages/kabira-mobility/hermes-75/source/hermes-7560753b0866839.jpg', name: 'Hermes 75', price: '66,700', mileage: ' 130miles per charge',topspeed:'85kmph', chargingtime:'4hrs',kerb:'90kg',battery:'2.4kwh',seat:'775mm',rated:'2.5kw' }
+])">
+
+
+
+
+<img src="/images/download_2_8a59044e1d.webp" alt="YoMoto" onclick="showDetails('YoMoto', '/images/download_2_8a59044e1d.webp', [
+{ url: 'https:/cdn.bikedekho.com/processedimages/yobykes/drift/source/drift664cbb9827d61.jpg', name: 'Yo Drift DX', price: '65,000', mileage: '60 miles per charge', topspeed:'25kmph', chargingtime:'10hrs',kerb:'71kg',battery:'0.34kwh',seat:'Not specified',rated:'0.25kw' }, 
+{ url: 'https:/cdn.bikedekho.com/processedimages/yobykes/edge-dx/source/edge-dx66cef30b497df.jpg?imwidth=880', name: 'Yo Edge Dx', price: '67,000', mileage: ' 80vmiles per charge',topspeed:'25kmph', chargingtime:'5hrs',kerb:'98kg',battery:'1.2kwh',seat:'775mm',rated:'0.25kw' }, 
+{ url: 'https:/cdn.bikedekho.com/processedimages/yobykes/edge/source/edge6160266d0fb4f.jpg', name: 'Yo Edge', price: '60,000', mileage: ' 60 miles per charge', topspeed:'25kmph', chargingtime:'5hrs',kerb:'95kg',battery:'1.2kwh',seat:'775mm',rated:'0.25kw' }
+])">
+
+
+
+
+<img src="/images/evolet_logo_3c3eaf0a02.webp" alt="evolet" onclick="showDetails('Evolet', '/images/evolet_logo_3c3eaf0a02.webp', [
+{ url: 'https:/imgd.aeplcdn.com/664x374/n/bw/models/colors/evolet-select-model-red-1698307320096.png?q=80', name: 'Pony', price: '55,799', mileage: '90 miles per charge', topspeed:'25kmph', chargingtime:'3-4hrs',kerb:'76kg',battery:'1.15kwh',seat:'800mm',rated:'0.25kw' }, 
+{ url: 'https:/imgd.aeplcdn.com/664x374/n/bw/models/colors/evolet-select-model-black-1698297868338.png?q=80', name: 'Derby', price: '71,399', mileage: '100 miles per charge', topspeed:'25kmph', chargingtime:'3-4hrs',kerb:'76kg',battery:'1.15kwh',seat:'800mm',rated:'0.25kw' }
+
+])">
+
+
+
+
+<img src="/images/gemopai_logo_d0a854cd2d.webp" alt="gemopai" onclick="showDetails('gemopai', '/images/gemopai_logo_d0a854cd2d.webp', [
+{ url: 'https:/imgd.aeplcdn.com/664x374/n/bw/models/colors/undefined-burnt-charcoal-1602092312137.jpg?q=80', name: 'Astrid Lite', price: '92,290', mileage: '90 miles per charge', topspeed:'65kmph', chargingtime:'4hrs',kerb:'110kg',battery:'2.9kwh',seat:'Not specified',rated:'2.4kw' }, 
+{ url: 'https:/imgd.aeplcdn.com/664x374/n/bw/models/colors/undefined-glossy-white-1602092423082.jpg?q=80', name: 'Ryder', price: '70,850', mileage: ' 90 miles per charge', topspeed:'25kmph', chargingtime:'4hrs',kerb:'80kg',battery:'1.25kwh',seat:'Not specified',rated:'0.25kw' }
+
+])">
+
+
+
+
+<img src="/images/hero_electric_logo_07cf7ceb18.webp" alt="hero" onclick="showDetails('Hero', '/images/hero_electric_logo_07cf7ceb18.webp', [
+{ url: 'https:/cdn.bikedekho.com/processedimages/heroelectric/hero-electric-photon/640X309/hero-electric-photon5ebbba2dc5f67.jpg?tr=w-300', name: 'Photon HX', price: '1,10,839', mileage: ' 108 miles per charge', topspeed:'45kmph', chargingtime:'5hrs',kerb:'87kg',battery:'1.872kwh',seat:'Not specified',rated:'1.2kw' }, 
+{ url: 'https:/cdn.bikedekho.com/processedimages/heroelectric/heroelectric-optima/640X309/heroelectric-optima646c50f71d619.jpg?tr=w-300', name: 'Optima CX', price: '89.663', mileage: '89 miles per charge', topspeed:'48kmph', chargingtime:'4.5hrs',kerb:'93kg',battery:'2kwh',seat:'Not specified',rated:'1.2kw' },
+{ url: 'https:/cdn.bikedekho.com/upload/modellogo/64d236e16b1db.jpg?tr=w-300', name: 'Flash LX', price: '59,640', mileage: '85 miles per charge', topspeed:'25kmph', chargingtime:'5hrs',kerb:'76kg',battery:'1.54kwh',seat:'Not specified',rated:'0.25kw' }, 
+{ url: 'https:/cdn.bikedekho.com/processedimages/hero-electric/atria/640X309/atria60ee6fd261c94.jpg?tr=w-300', name: 'Atria LX', price: '77,690', mileage: ' 85 miles per charge', topspeed:'25kmph', chargingtime:'5hrs',kerb:'69kg',battery:'1.54kwh',seat:'800mm',rated:'0.25kw' }
+
+])">
+
+
+
+
+<img src="/images/honda_logo_35da40bf6a.webp" alt="Honda" onclick="showDetails('Honda', '/images/honda_logo_35da40bf6a.webp', [
+{ url: 'https:/imgd.aeplcdn.com/1056x594/n/cw/ec/199885/activa-e-right-front-three-quarter-7.jpeg?isig=0&q=80&wm=3', name: 'Honda Active e', price: '1,17,000', mileage: '102km',topspeed:'80kmph',chargingtime:'5-6hrs',kerb:'118kg',battery:'3kwh',seat:'675mm',rated:'3kw'},
+{ url: 'https:/imgd.aeplcdn.com/1056x594/n/cw/ec/193289/honda-qc1-left-front-three-quarter4.jpeg?isig=0&q=80&wm=3', name: 'Honda QC1', price: '96,530', mileage: '80km',topspeed:'50kmph',chargingtime:'6.5hrs',kerb:'89.5kg',battery:'1.5kwh',seat:'704mm',rated:'1.5kw'}
+])">
+
+
+
+
+<img src="/images/hope_87120c8bd9.webp" alt="hop" onclick="showDetails('hop', '/images/hope_87120c8bd9.webp', [
+{ url: 'https:/cdn.bikedekho.com/processedimages/hop-electric/leo/source/leo677bd2c6b5683.jpg', name: 'LEO', price: '84,360', mileage: '95 miles per charge', topspeed:'25kmph', chargingtime:'3.3hrs',kerb:'77kg',battery:'1.44kwh',seat:'800mm',rated:'0.25kw' }, 
+{ url: 'https:/www.bikes4sale.in/pictures/default/hop-leo-v3/hop-leo-v3-640.jpg', name: 'LEO V3', price: '84,360', mileage: '110 miles per charge', topspeed:'70kmph', chargingtime:'3.15hrs',kerb:'98kg',battery:'2kwh',seat:'780mm',rated:'2.5kw' },
+{ url: 'https:/imgd.aeplcdn.com/1056x594/n/cw/ec/130963/lyf-right-front-three-quarter-2.jpeg?isig=0&q=80&wm=3', name: 'LYF', price: '66,535', mileage: '125 miles per charge',topspeed:'25kmph', chargingtime:'3.15hrs',kerb:'65kg',battery:'1.12kwh',seat:'790mm',rated:'0.25kw' },
+])">
+
+
+
+
+<img src="/images/images_1_aa5d661bc2.webp" alt="lectrix" onclick="showDetails('Lectrix', '/images/images_1_aa5d661bc2.webp', [
+{ url: 'https:/cdn.bikedekho.com/processedimages/lectrix-ev/lxs-2/source/lxs-2662b4d432c0b8.jpg?tr=w-320', name: 'Lectrix EV LXS 2.0', price: '89,990', mileage: '98 miles per charge', topspeed:'55kmph', chargingtime:'3hrs',kerb:'100kg',battery:'2.3kwh',seat:'Not specified',rated:'1.2kw' },
+{ url: 'https:/cdn.bikedekho.com/upload/modellogo/64c0d2dd743ed.jpg?tr=w-320', name: 'Lectrix EV LXS G2.0', price: '99,999', mileage: '80 miles per charge', topspeed:'55kmph', chargingtime:'3hrs',kerb:'100kg',battery:'2.3kwh',seat:'Not specified',rated:'1.8kw' }
+
+])">
+
+
+
+
+<img src="/images/joy_e_bike_logo_33a4744fcc.webp" alt="joyebike" onclick="showDetails('joyebike', '/images/joy_e_bike_logo_33a4744fcc.webp', [
+{ url: 'https:/cdn.bikedekho.com/processedimages/joye-bike/glob/source/glob5e999d34e1968.jpg', name: 'Glob', price: '70,000', mileage: '60 miles per charge', topspeed:'25kmph', chargingtime:'3.5hrs',kerb:'67kg',battery:'13.98kwh',seat:'1100mm',rated:'0.25kw' },
+{ url: 'https:/cdn.bikedekho.com/processedimages/joye-bike/wlof/640X309/wlof64197e5b6902d.jpg?tr=w-300', name: 'Wolf', price: '57,749', mileage: '90 miles per charge', topspeed:'25-46kmph', chargingtime:'5.5hrs',kerb:'67-81kg',battery:'1.86kwh',seat:'Not specified',rated:'0.25kw' },
+{ url: 'https:/cdn.bikedekho.com/processedimages/joye-bike/gen-nxt-nanu-e-scooter/640X309/gen-nxt-nanu-e-scooter64197e4313ccf.jpg?tr=w-300', name: 'GEn Nxt', price: '70,000', mileage: '90 miles per charge', topspeed:'25kmph', chargingtime:'5hrs',kerb:'70kg',battery:'Not specified',seat:'Not specified',rated:'Not specified' },
+{ url: 'https:/cdn.bikedekho.com/processedimages/joy-e/mihos/640X309/mihos63bff03610510.jpg?tr=w-300', name: 'Mihos', price: '1,13,000', mileage: ' 130miles per charge', topspeed:'65kmph', chargingtime:'5.5hrs',kerb:'110kg',battery:'2.96kwh',seat:'750mm',rated:'1.5kw' }
+
+
+])">
+
+
+
+
+<img src="/images/kymco_logo_ee33459003.webp" alt="kymco" onclick="showDetails('kymco', '/images/kymco_logo_ee33459003.webp', [
+{ url: 'https:/myelectrikbike.com/admin/student_imgs/F9%20myelectrikbike.png', name: 'Kymco F9', price: '1,49lakh', mileage: '120 miles per charge', topspeed:'110kmph', chargingtime:'2hrs',kerb:'107kg',battery:'3.84kwh',seat:'790mm',rated:'9.4kw' },
+{ url: 'https:/myelectrikbike.com/admin/student_imgs/_(270%20%C3%97%20185px)Iflow%20(1)%20(1).png', name: 'Kumco iFlow', price: '74,740', mileage: '160 miles per charge', topspeed:'60kmph', chargingtime:'4.5hrs',kerb:'150kg',battery:'2.1kwh',seat:'Not Specified',rated:'2.8hp' },
+{ url: 'https:/myelectrikbike.com/admin/student_imgs/kimiko%20(1)%20(1).png', name: 'Kymco Like 125EV', price: '1lakh', mileage: '199 miles per charge', topspeed:'60kmph', chargingtime:'5hrs',kerb:'110kg',battery:'3.25kwh',seat:'805mm',rated:'3.2kw' },
+{ url: 'https:/myelectrikbike.com/admin/student_imgs/_(270%20%C3%97%20185px)%20Many%20(1)%20(1).png', name: 'Kymco Many 110EV', price: '1,24,208', mileage: '200 miles per charge', topspeed:'100kmph', chargingtime:'hrs',kerb:'110kg',battery:'Not Specified',seat:'Not Specified',rated:'3.6kw' }
+])">
+
+
+
+
+<img src="/images/odysse_logo_0f38352b5b.webp" alt="odysse" onclick="showDetails('odysse', '/images/odysse_logo_0f38352b5b.webp', [
+{ url: 'https:/odysse.in/wp-content/uploads/2019/08/2-1-scaled.jpg', name: 'E2GO Graphene', price: '63,550', mileage: '100 miles per charge', topspeed:'25kmph', chargingtime:'8hrs',kerb:'90kg',battery:'1.92kwh',seat:'750mm',rated:'0.25kw' },
+{ url: 'https:/odysse.in/wp-content/uploads/2022/05/Black-2.png', name: 'Racer Lite V2+', price: '77,250', mileage: '150 miles per charge', topspeed:'25kmph', chargingtime:'3.5hrs',kerb:'75kg',battery:'2.6kwh',seat:'810mm',rated:'1.2kw' },
+{ url: 'https:/odysse.in/wp-content/uploads/2025/05/Jade-Green-img1.jpg', name: 'Hyfy', price: '85,000', mileage: '120 miles per charge', topspeed:'45kmph', chargingtime:'4hrs',kerb:'95kg',battery:'3kwh',seat:'800mm',rated:'2.5kw' },
+{ url: 'https:/odysse.in/wp-content/uploads/2021/06/067A5282-Blue-scaled.jpg', name: 'Hawki Li', price: '1.10lakh', mileage: '85 miles per charge', topspeed:'45kmph', chargingtime:'3.5hrs',kerb:'128kg',battery:'1.44kwh',seat:'830mm',rated:'1.8kw' }
+])">
+
+
+
+
+<img src="/images/okaya_electric_vehicle_logo_ae84dbd299.webp" alt="okaya" onclick="showDetails('okaya', '/images/okaya_electric_vehicle_logo_ae84dbd299.webp', [
+{ url: 'https:/cdn.bikedekho.com/processedimages/okaya/freedum/source/freedum63329c2b07a7f.jpg', name: 'Okaya Freedum', price: '69,900', mileage: '75 miles per charge', topspeed:'25kmph', chargingtime:'8hrs',kerb:'90kg',battery:'1.92kwh',seat:'750mm',rated:'0.25kw' },
+{ url: 'https:/cdn.bikedekho.com/processedimages/okaya/faast-f2t/source/faast-f2t63848b60d4537.jpg', name: 'Okaya Faast F2T', price: '89,999', mileage: '85 miles per charge', topspeed:'70kmph', chargingtime:'4hrs',kerb:'110kg',battery:'2.2kwh',seat:'810mm',rated:'1.2kw' },
+{ url: 'https:/cdn.bikedekho.com/processedimages/okaya/classiq/source/classiq63329c001b565.jpg', name: 'Okaya ClassIQ', price: '74,499', mileage: '70 miles per charge', topspeed:'25kmph', chargingtime:'5hrs',kerb:'93kg',battery:'1.44kwh',seat:'780mm',rated:'0.250kw' },
+{ url: 'https:/cdn.bikedekho.com/processedimages/okaya/motofaast/source/motofaast65d32fd9c29ec.jpg', name: 'Okaya Motofaast', price: '1,28,999', mileage: '130 miles per charge', topspeed:'70kmph', chargingtime:'5hrs',kerb:'119kg',battery:'3.5kwh',seat:'800mm',rated:'1kw' }
+])">
+
+
+
+
+<img src="/images/okinawa_logo_e167d7bf66.webp" alt="okinawa" onclick="showDetails('okinawa', '/images/okinawa_logo_e167d7bf66.webp', [
+{ url: 'https:/okinawascooters.com/Uploads/ProductsImage/r30-yellow3.png', name: 'R30', price: '70,000', mileage: '60 miles per charge', topspeed:'25kmph', chargingtime:'5hrs',kerb:'150kg',battery:'1.25kwh',seat:'735mm',rated:'0.25kw' },
+{ url: 'https:/okinawascooters.com/Uploads/ProductsImage/lite-banner.webp', name: 'Lite', price: '66,993', mileage: '60 miles per charge', topspeed:'25kmph', chargingtime:'5hrs',kerb:'90kg',battery:'1.25kwh',seat:'740mm',rated:'0.25kw' },
+{ url: 'https:/okinawascooters.com/uploads/ProductsImage/23pdctclrimg_oki-red.png', name: 'Okhi 90', price: '1,67,536', mileage: '160 miles per charge', topspeed:'90kmph', chargingtime:'6hrs',kerb:'96kg',battery:'3.6kwh',seat:'803mm',rated:'2.5kw' },
+{ url: 'https:/okinawascooters.com/uploads/ProductsImage/50pdctclrimg_ipraise.png', name: 'iPraise+', price: '1,14,000', mileage: '137 miles per charge', topspeed:'56kmph', chargingtime:'5hrs',kerb:'130kg',battery:'3.6kwh',seat:'800mm',rated:'2.7kw' },
+{ url: 'https:/okinawascooters.com/Uploads/ProductsImage/ridge-plus-img.png', name: 'Ridge+', price: '70,096', mileage: '84 miles per charge', topspeed:'45kmph', chargingtime:'3hrs',kerb:'120kg',battery:'1.7kwh',seat:'735mm',rated:'1.2kw' },
+{ url: 'https:/okinawascooters.com/uploads/ProductsImage/1pdctclrimg_img-1.png', name: 'Praise Pro', price: '1.15lakh', mileage: '81 miles per charge', topspeed:'56kmph', chargingtime:'3hrs',kerb:'130kg',battery:'2.08kwh',seat:'800mm',rated:'2.7kw' },
+
+])">
+
+
+
+
+<img src="/images/ola_electric_logo_2c2a63ede7.webp" alt="OLA" onclick="showDetails('OLA', '/images/ola_electric_logo_2c2a63ede7.webp', [
+{ url: 'https:/imgd.aeplcdn.com/1056x594/n/cw/ec/197575/s1-pro-rear-view-mirror.jpeg?isig=0&q=80&wm=3', name: 'Ola Electric S1 pro', price: '1,44,309', mileage:'176km',topspeed:'117kmph',chargingtime:'6.5hrs',kerb:'108kg',battery:'3kwh',seat:'791mm',rated:'5.5kw', color: '' },
+{ url: 'https:/imgd.aeplcdn.com/1056x594/n/cw/ec/155297/s1-air-right-front-three-quarter-8.png?isig=0&q=80&wm=3', name: 'Ola Electric S1 Air', price: '1,25,191', mileage: '151km',topspeed:'90kmph',chargingtime:'5hrs',kerb:'108kg',battery:'3kwh',seat:'805mm',rated:'2.7kw', color: '' },
+{ url: 'https:/imgd.aeplcdn.com/1056x594/n/cw/ec/196995/s1-x-right-front-three-quarter.jpeg?isig=0&q=80&wm=3', name: 'Ola Electric S1 X', price: '99,776', mileage: '108km',topspeed:'101kmph',chargingtime:'5hrs',kerb:'105kg',battery:'2kwh',seat:'791mm',rated:'5.5km', color: '' },
+{url: 'https:/imgd.aeplcdn.com/1056x594/n/cw/ec/155289/s1-pro-gen-2-left-front-three-quarter.png?isig=0&q=80&wm=3', name: 'Ola Electric S1 pro Gen2', price: '1,57,757', mileage: '195km',topspeed:'120kmph',chargingtime:'6.5hrs',kerb:'116kg',battery:'4kwh',seat:'805mm',rated:'5.5km', color: '' }
+])">
+
+
+
+
+<img src="/images/pure_logo_33ff95b72a.webp" alt="pure" onclick="showDetails('pure', '/images/pure_logo_33ff95b72a.webp', [
+{ url: 'https:/www.pureev.in/assets/frontend/images/home/specifications/red_max.png', name: 'ePluto 7G MAX', price: '1,14,999', mileage: '211 miles per charge', topspeed:'72kmph', chargingtime:'5hrs',kerb:'76kg',battery:'3.5kwh',seat:'760mm',rated:'2.2kw' },
+{ url: 'https:/www.pureev.in/assets/frontend/images/home/specifications/epluto_7g_pro.png', name: 'ePluto 7G Pro', price: '1,02,999', mileage: '171 miles per charge', topspeed:'72kmph', chargingtime:'4hrs',kerb:'79kg',battery:'3kwh',seat:'760mm',rated:'2.2kw' },
+{ url: 'https:/www.pureev.in/assets/frontend/images/home/specifications/epluto_7g.png', name: 'ePluto 7G', price: '92,999', mileage: '101 miles per charge', topspeed:'47kmph', chargingtime:'4hrs',kerb:'76kg',battery:'1.8kwh',seat:'760mm',rated:'1.2kw' },
+{ url: 'https:/www.pureev.in/assets/frontend/images/home/specifications/ePluto%207G_CX.png', name: 'ePluto 7G CX', price: '77,999', mileage: '101 miles per charge', topspeed:'47kmph', chargingtime:'4hrs',kerb:'76kg',battery:'1.8kwh',seat:'760mm',rated:'1.2kw' }
+])">
+
+
+
+
+<img src="/images/simple_energy_logo_645541b8a2.webp" alt="simple energy" onclick="showDetails('simple enrgy', '/images/simple_energy_logo_645541b8a2.webp', [
+{ url: 'https:/cdn.bikedekho.com/processedimages/simple-energy/simple-one/source/simple-one67af05591b4dc.jpg', name: 'Simple One', price: '1.66lakh', mileage: '248 miles per charge', topspeed:'105kmph', chargingtime:'4hrs',kerb:'137kg',battery:'5kwh',seat:'796mm',rated:'4.5kw' },
+{ url: 'https:/cdn.bikedekho.com/processedimages/simple-energy/one-s/source/one-s67d2600a0e092.jpg', name: 'Simple One S', price: '1.39lakh', mileage: '181 miles per charge', topspeed:'105kmph', chargingtime:'3.5hrs',kerb:'137kg',battery:'3.7kwh',seat:'796mm',rated:'8.5kw' }
+])">
+
+
+
+
+<img src="/images/super_eco1684839660_08f517d773.webp" alt="super eco" onclick="showDetails('super-eco', '/images/super_eco1684839660_08f517d773.webp', [
+{ url: 'https:/superecoev.in/images/product/Tifx.png', name: 'T1 FX', price: '1.2lakh', mileage: '120 miles per charge', topspeed:'80kmph', chargingtime:'5hrs',kerb:'110kg',battery:'3.5kwh',seat:'780mm',rated:'3kw' },
+{ url: 'https:/superecoev.in/images/product/s25.png', name: 'S25 i/Pro', price: '1.05lakh', mileage: '100 miles per charge', topspeed:'75kmph', chargingtime:'5hrs',kerb:'105kg',battery:'3kwh',seat:'770mm',rated:'2.5kw' },
+{ url: 'https:/superecoev.in/images/product/s1.png', name: 'S1', price: '95,000', mileage: '90 miles per charge', topspeed:'70kmph', chargingtime:'6hrs',kerb:'100kg',battery:'2.5kwh',seat:'760mm',rated:'2kw' },
+])">
+
+
+
+
+<img src="/images/suzuki_logo_04f3a7e33c.webp" alt="suzuki" onclick="showDetails('Suzuki', '/images/suzuki_logo_04f3a7e33c.webp', [
+{ url: 'https:/cdn.suzukimotorcycle.co.in/public-live/uploads/media-images/original/250204_Suzuki_EV_WEB_Product_Banner_1920x965px_67ab17e54c1d2.jpg', name: 'Suzuki e-Access', price: '1.2lakh', mileage: '95 miles per charge', topspeed:'71kmph', chargingtime:'6.42hrs',kerb:'122kg',battery:'3.07kwh',seat:'765mm',rated:'4.1kw' },
+])">
+
+
+
+
+<img src="/images/techo_electra_logo_47b40a4713.webp" alt="techo" onclick="showDetails('Techo Electra', '/images/techo_electra_logo_47b40a4713.webp', [
+{ url: '', name: '', price: '', mileage: ' miles per charge',topspeed:'25kmph', chargingtime:'5hrs',kerb:'59kg',battery:'1.56kwh',seat:'730mm',rated:'0.25kw' },
+{ url: '', name: '', price: '', mileage: ' miles per charge', topspeed:'25kmph', chargingtime:'5hrs',kerb:'59kg',battery:'1.56kwh',seat:'730mm',rated:'0.25kw' },
+{ url: '', name: '', price: '', mileage: ' miles per charge', topspeed:'25kmph', chargingtime:'5hrs',kerb:'59kg',battery:'1.56kwh',seat:'730mm',rated:'0.25kw' },
+])">
+
+
+
+
+<img src="/images/tvs_logo_8b0bbb2b7a.webp" alt="TVS" onclick="showDetails('TVS', '/images/tvs_logo_8b0bbb2b7a.webp', [
+{ url: 'https:/www.tvsmotor.com/electric-scooters/tvs-iqube/-/media/Vehicles/Feature/Iqube/Variant/TVS-iQube/Color_Images/Pearl-White/PearlWhite-angle.webp', name: 'iQube 2.2kwh', price: '89,999*', mileage: '75km', topspeed:'75kmph',chargingtime:'2.5hrs',kerb:'110kg',battery:'2.2kwh',seat:'770mm',rated:'3kw',color: '' },
+{ url: 'https:/www.tvsmotor.com/electric-scooters/tvs-iqube/-/media/Vehicles/Feature/Iqube/Variant/TVS-iQube/Color_Images/Walnut-Brown/WalnutBrown-angle-iqube34.webp', name: 'iQube 3.4kwh', price: '1,26,625*', mileage: '100km',topspeed:'78kmph',chargingtime:'4.3hrs',kerb:'118.6kg',battery:'3.4kwh',seat:'770mm',rated:'3kw', color: '' },
+{ url: 'https:/www.tvsmotor.com/electric-scooters/tvs-iqube/-/media/Vehicles/Feature/Iqube/Variant/TVS-iQube-S/Color_Images/Celebration-Orange/CelebrationEdition-angle.webp', name: 'iQube S', price: '1,44,420*', mileage: '100km', topspeed:'78kmph',chargingtime:'4.5hrs',kerb:'118.6kg',battery:'3kwh',seat:'770mm',rated:'3kw',color: '' },
+{ url: 'https:/www.tvsmotor.com/electric-scooters/tvs-iqube/-/media/Vehicles/Feature/Iqube/Variant/TVS-iQube-ST/Color_Images/Starlight-Blue-Glossy/StarlightBlue-angle.webp', name: 'iQube ST', price: '1,85,373*', mileage: '150km', topspeed:'82kmph',chargingtime:'4.18hrs',kerb:'132kg',battery:'5.1kwh',seat:'770mm',rated:'3kw',color: '' }
+])">
+
+
+<img src="/images/Untitled_1_7_8a532bef32.webp" alt="log9" onclick="showDetails('LOG9', '/images/Untitled_1_7_8a532bef32.webp', [
+{ url: 'https:/images.tractorjunction.com/1_Log9_1_9a96350817.jpg?format=webp&quality=40', name: 'Log9 Bzinesslite', price: '96,499', mileage: '90 miles per charge', topspeed:'50kmph', chargingtime:'in 12 minutes',kerb:'120kg',battery:'2.024kwh',seat:'765mm',rated:'1.2kw' }
+])">
+
+
+
+</div>
+</div>
+
+<div id="detailsContainer">
+    <h2 id="imageTitle"></h2>
+    <img id="selectedImage" alt="Selected Image">
+    <div id="similarPhotos" class="gallery"></div>
+    <button onclick="closeDetails()">Close Details</button>
+</div>
+
+<script>
+    function showDetails(title, selectedImage, suggestedPhotos) {
+        // Hide the gallery
+        document.querySelector('.gallery').style.display = 'none';
+
+        // Display the details container
+        var detailsContainer = document.getElementById('detailsContainer');
+        detailsContainer.style.display = 'flex';
+
+        // Set the title
+        document.getElementById('imageTitle').textContent = title;
+
+        // Set the selected image
+        var selectedImageElement = document.getElementById('selectedImage');
+        selectedImageElement.src = selectedImage;
+
+        // Display suggested photos
+        var similarPhotosContainer = document.getElementById('similarPhotos');
+        similarPhotosContainer.innerHTML = '';
+        suggestedPhotos.forEach(function(photo) {
+            var imgContainer = document.createElement('div');
+            imgContainer.className = 'suggestedImageContainer';
+
+            var img = document.createElement('img');
+            img.src = photo.url;
+            img.alt = 'Suggested Image';
+
+            var detailsContainer = document.createElement('div');
+            detailsContainer.className = 'details';
+
+            var nameParagraph = document.createElement('p');
+            nameParagraph.innerHTML = `<strong>Name:</strong> ${photo.name}`;
+
+            var priceParagraph = document.createElement('p');
+            priceParagraph.innerHTML = `<strong>Price:</strong> ${photo.price}`;
+
+            var mileageParagraph = document.createElement('p');
+            mileageParagraph.innerHTML = `<strong>Mileage:</strong> ${photo.mileage}`;
+
+            var chargingtimeparagraph = document.createElement('p');
+            chargingtimeparagraph.innerHTML = `<strong>Charging Time:</strong> ${photo.chargingtime}`;
+
+            var kerbParagraph = document.createElement('p');
+            kerbParagraph.innerHTML = `<strong>Kerb Weight:</strong> ${photo.kerb}`;
+
+            var batteryParagraph = document.createElement('p');
+            batteryParagraph.innerHTML = `<strong>Battery Capacity:</strong> ${photo.battery}`;
+            
+            var seatParagraph = document.createElement('p');
+            seatParagraph.innerHTML = `<strong>Seat Height:</strong> ${photo.seat}`;
+
+            var ratedParagraph = document.createElement('p');
+            ratedParagraph.innerHTML = `<strong>Rated Power:</strong> ${photo.rated}`;
+
+            var colorParagraph = document.createElement('p');
+            colorParagraph.innerHTML = `<strong>Top Speed:</strong> ${photo.topspeed}`;
+
+            var bookNowButton = document.createElement('button');
+            bookNowButton.innerHTML = 'Book Now';
+            bookNowButton.className = 'bookNowButton';
+            bookNowButton.onclick = function(event) {
+                event.preventDefault();
+                window.location.href = 'book-now.html';
+            };
+
+            detailsContainer.appendChild(nameParagraph);
+            detailsContainer.appendChild(priceParagraph);
+            detailsContainer.appendChild(mileageParagraph);
+            detailsContainer.appendChild(chargingtimeparagraph);
+            detailsContainer.appendChild(kerbParagraph);
+            detailsContainer.appendChild(batteryParagraph);
+            detailsContainer.appendChild(seatParagraph);
+            detailsContainer.appendChild(ratedParagraph);
+            detailsContainer.appendChild(colorParagraph);
+            detailsContainer.appendChild(bookNowButton);
+
+            imgContainer.appendChild(img);
+            imgContainer.appendChild(detailsContainer);
+
+            imgContainer.onclick = function() {
+                // You can add additional functionality for each suggested photo here
+                // For now, let's just close the details
+                closeDetails();
+            };
+
+            similarPhotosContainer.appendChild(imgContainer);
+        });
+    }
+
+    function closeDetails() {
+        // Show the gallery
+        document.querySelector('.gallery').style.display = 'flex';
+
+        // Hide the details container
+        var detailsContainer = document.getElementById('detailsContainer');
+        detailsContainer.style.display = 'none';
+    }
+</script>
+
+
+<div class="banner">
+    <div class="inside-banner-text">
+        <img src="https://media.atherenergy.com/Map_Desktop_result_db0d31ab3d.webp" alt="map" >
+        <br>
+        <div class="banner-content">
+        <span class="text">Electroride</span>
+        <br>
+        <span class="text1">India's Leading<br>Electric Vehicle<br>Two-Wheeler<br>Retailer...</span>
+   
+        <br>
+        <span class="learn-more"><a href="#">Learn More<i class="fa-solid fa-arrow-right"></i></a></span>
+        <span class="text2">Join with us....<i class="fa-regular fa-handshake"></i></span>
+        </div>
+    </div>
+  </div>
+  
+  
+  <section>
+    <div class="trusted-brnd">
+    <h1 class="trustiee">Upcoming models</h1>
+    <div class="container2">
+      <div class="body">
+          <div class="ola-s1-pro">
+          <img src="https://cdn.bikedekho.com/processedimages/ola-electric/s1-pro/source/s1-pro676118f288566.jpg" alt="ola-s1-pro" >
+          <div class="details">
+          <h2 class="vehicle-name"><b>OLA</b> S1 Pro Gen2</h2>
+          <p class="btn1">2nd Gen</p>
+          <h4>Engeeneered to thrill</h4>
+          <span class="prize"> &#8377;1,36,499 <b class="or">OR</b></span><br>
+          <span class="emi"> &#8377;3,513/month</span>
+          <hr>
+  
+         <span class="stars"><i class="fa-solid fa-star"></i>4 KWh Battery</span>
+         <br>
+         <span class="stars"><i class="fa-solid fa-star"></i>242 Km Range</span>
+         <br>
+         <span class="stars"><i class="fa-solid fa-star"></i>120 Km Top Speed</span>
+         <br>
+          </div>
+          <a href="#" class="explore-btn">Explore s1 Pro Gen2<i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+  </div>
+  
+  <div class="body1">
+      <div class="ola-air">
+      <img src="https://cdn.bikedekho.com/processedimages/ather-energy/2025-450x/source/2025-450x6777b9b8341ae.jpg" alt="ola-s1-air">
+      <div class="details">
+          <h2 class="vehicle-name"><b>Ather</b>450X</h2>
+          <h4>The Versatile 450X</h4>
+          <span class="prize"> &#8377;1.56lakh <b class="or">OR</b></span><br>
+          <span class="emi"> &#8377;5,334/month</span>
+          <hr>
+         <span class="stars"><i class="fa-solid fa-star"></i>3.7 KWh Battery</span>
+         <br>
+         <span class="stars"><i class="fa-solid fa-star"></i>161 Km Range</span>
+         <br>
+         <span class="stars"><i class="fa-solid fa-star"></i>90 Km Top Speed</span>
+         <br>
+          </div>
+          <a href="#" class="explore-btn1">Explore Ather 450X<i class="fa-solid fa-arrow-right"></i></a>
+  </div>
+  </div>
+  
+  <div class="body2">
+  <div class="ola-x">
+  <img src="https://imgd.aeplcdn.com/1056x594/n/cw/ec/196093/iqube-left-front-three-quarter.jpeg?isig=0&q=80&wm=3" alt="ola-s1-x">
+  <div class="details">
+      <h2 class="vehicle-name"><b>TVS</b>iQube S</h2>
+      <h4>Engeeneered to thrill</h4>
+      <span class="prize"> &#8377;1.18lakh <b class="or">OR</b></span><br>
+      <span class="emi"> &#8377;3,305/month</span>
+      <hr>
+     <span class="stars"><i class="fa-solid fa-star"></i>3.4 KWh Battery</span>
+     <br>
+     <span class="stars"><i class="fa-solid fa-star"></i>100 Km Range</span>
+     <br>
+     <span class="stars"><i class="fa-solid fa-star"></i>78 Km Top Speed</span>
+     <br> 
+      </div>
+      <a href="#" class="explore-btn2">Explore iQube 5<i class="fa-solid fa-arrow-right"></i></a>
+  </div>
+  </div>
+  </div>
+  </div>
+  </section>
+  
+  
+    <div class="info">
+      <div class="info-content">
+        <h2>Importance of ev:-</h2>
+        <p>Electric scooters are increasingly becoming popular in India as an alternative to traditional petrol-powered vehicles. With the rising cost of petrol and the growing environmental concerns, electric scooters offer an eco-friendly and cost-effective way to travel. Electric scooters are known for being lightweight and zippy. They are highly manoeuvrable and easy to maintain. The demand for electric scooters has risen in recent years, and more and more companies are offering top-of-the-line e-scooters. In India, there are approximately 266 e-scooter currently on sale.</p>
+  
+      <h2>Why should you switch to Electric Scooters now?</h2>
+      <p>Electric scooters have taken the world by storm, becoming one of the most popular modes of transportation in urban areas. Whether you're looking for a daily commute vehicle or a fun weekend ride, electric scooters are an excellent way to get around. They're convenient, easy to use, and eco-friendly, making them a great choice for those who want to reduce their carbon footprint. Here's why you should consider choosing an electric scooter:</p>
+      <ul>
+        
+        <li>Cost-Effective</li>
+        <li>Easy to Maintain</li>
+        <li>Multiple options to choose from</li>
+        <li>Light and highly manoeuvrable</li>
+        <li>Environmentally friendly</li>
+      </ul>
+  <h2>Top Electric Scooter Brands List</h2>
+  <p>We've scoured the industry to find the top brands that offer the best quality, performance, and value in electric scooters. Our list features the leading names in the industry, with options to suit any budget and style preference. Currently, these 5 best electric scooter brands in India are leading their way through the crowd!</p>
+  <ul>
+    <li>Ola Electric</li>
+    <li>Bajaj Auto</li>
+    <li>Ola Electric</li>
+    <li>Hero Vida</li>
+    <li>TVS Motor</li>
+    <li>Bounce</li>
+    <li>Ather</li>
+  </ul>
+  <h2>Why Choose Electroride to Explore Top Electric Scooter Brands In India?</h2>
+  <p>
+    Electroride brings you a comprehensive list of Electric scooter brands in India. We pride ourselves on being the ultimate resource for anyone interested in electric scooters. With us, you can explore an endless range of electric scooter brands in India, from well-established brands like Bajaj and TVS to up-and-coming startups like Liger Mobility and Ola Electric. At Electroride, we provide an in-depth review of EV brands in terms of their exclusive features, offerings and overall value. Moreover, you can access experts' unbiased reviews to help you make a fair decision while buying your next EV scooter. Furthermore, with our comparison tools, you can easily compare different electric scooters in terms of their specifications, value-adding features & on-road prices.
+  So, if you want to explore all the electric scooter brands in India, our website is the best place to start. With extensive coverage, detailed reviews, comparison tools, expert reviews, you get every information needed to make an informed decision.
+  </p>
+    </div>
+  </div>
+  
+  <footer>
+    <div class="footer-content">
+       
+      <div class="quick-info">
+        <h2>quick services</h2>
+        <ul>
+         <a href="#" <li>Gallery and pricing</li></a>
+          <a href="#"<li>Feedback</li></a>
+          <a href="#"<li>New bikes</li></a>
+          <a href="#"<li>offers</li></a>
+          <a href="#"<li>loan</li></a>
+        </ul>
+      </div>
+      <div class="footer-company">
+      <h2>company</h2>
+      <ul>
+        <a href="#" <li>contact</li></a>
+         <a href="#"<li>About</li></a>
+         <a href="#"<li>Home</li></a>
+       </ul>
+  </div>
+  <div class="footer-contact">
+    <h2>connect with us</h2>
+    <span class="address"><i class="fa-solid fa-location-dot"></i>Sri siddhartha<br> institute of<br> technology,tumkur.</span>
+    <br>
+    <span class="mail"><i class="fa-regular fa-envelope"></i>electroride@gmail.com</span>
+    <br>
+    <span class="ph-no"><i class="fa-solid fa-phone"></i>+91 1234567890</span>
+  </div>
+  <div class="footer-logo">
+    <h1>
+      Electroride
+    </h1>
+    <h3>keep in touch</h3><br>
+    <span class="social-media"><i class="fa-brands fa-instagram"></i><i class="fa-brands fa-facebook"></i><i class="fa-brands fa-google"></i><i class="fa-brands fa-twitter"></i><i class="fa-brands fa-pinterest"></i></span>
+  </div>
+    </div>
+    <hr style="width: 100%; margin: 0; padding: 0;">
+    <div class="copyright" style="text-align: center; font-family: 'Times New Roman', Times, serif; font-weight: 100;">
+      &copy;2023 Electroride:All rights reserved
+    </div>
+  </footer>
+</body>
+</html>

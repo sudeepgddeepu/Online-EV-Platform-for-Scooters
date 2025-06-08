@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electroride - Dealer Feedback</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-7">
+                    <a href="#" class="flex items-center py-4 px-2">
+                        <span class="font-semibold text-gray-500 text-lg">ELECTRORIDE</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-3">
+                    <a href="index3.html" class="py-4 px-2 text-gray-500 hover:text-gray-900">ABOUT</a>
+                    <a href="gallery and prces.html" class="py-4 px-2 text-gray-500 hover:text-gray-900">GALLERY & PRICING</a>
+                    <a href="contact-form.html" class="py-4 px-2 text-gray-500 hover:text-gray-900">CONTACT</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button class="outline-none mobile-menu-button">
+                        <i class="fas fa-bars text-gray-500"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="hidden mobile-menu">
+            <ul class="bg-white">
+                <li><a href="index3.html" class="block text-sm px-2 py-4 hover:bg-gray-200">ABOUT</a></li>
+                <li><a href="gallery and prces.html" class="block text-sm px-2 py-4 hover:bg-gray-200">GALLERY & PRICING</a></li>
+                <li><a href="contact-form.html" class="block text-sm px-2 py-4 hover:bg-gray-200">CONTACT</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Feedback Form -->
+    <div class="container mx-auto px-4 pt-24 pb-12">
+        <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-8">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Electroride Dealer Feedback</h2>
+            
+            <form id="feedbackForm" class="space-y-6">
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700">Your Name</label>
+                    <input type="text" id="name" name="name" required
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                </div>
+
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700">Your Email</label>
+                    <input type="email" id="email" name="email" required
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                </div>
+
+                <div>
+                    <label for="experience" class="block text-sm font-medium text-gray-700">How was your experience with our dealership?</label>
+                    <textarea id="experience" name="experience" rows="4" required
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
+                </div>
+
+                <div>
+                    <label for="scooterModel" class="block text-sm font-medium text-gray-700">Which Electroride scooter model did you purchase?</label>
+                    <input type="text" id="scooterModel" name="scooterModel" required
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                </div>
+
+                <div>
+                    <label for="recommend" class="block text-sm font-medium text-gray-700">Would you recommend our dealership to others?</label>
+                    <select id="recommend" name="recommend" required
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        <option value="">Select an option</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="improvements" class="block text-sm font-medium text-gray-700">How can we improve our services?</label>
+                    <textarea id="improvements" name="improvements" rows="4"
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
+                </div>
+
+                <div>
+                    <label for="satisfaction" class="block text-sm font-medium text-gray-700">Satisfaction Level (1-10)</label>
+                    <input type="number" id="satisfaction" name="satisfaction" min="1" max="10" required
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                </div>
+
+                <div>
+                    <label for="contactPreference" class="block text-sm font-medium text-gray-700">Preferred contact method</label>
+                    <input type="text" id="contactPreference" name="contactPreference"
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                </div>
+
+                <div>
+                    <label for="comments" class="block text-sm font-medium text-gray-700">Additional Comments</label>
+                    <textarea id="comments" name="comments" rows="4"
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
+                </div>
+
+                <div>
+                    <label for="hearAboutUs" class="block text-sm font-medium text-gray-700">How did you hear about Electroride Dealership?</label>
+                    <input type="text" id="hearAboutUs" name="hearAboutUs" required
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                </div>
+
+                <div class="flex justify-center">
+                    <button type="submit"
+                        class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        Submit Feedback
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
+        <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+            <div class="mt-3 text-center">
+                <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
+                    <i class="fas fa-check text-green-600"></i>
+                </div>
+                <h3 class="text-lg leading-6 font-medium text-gray-900">Feedback Submitted!</h3>
+                <div class="mt-2 px-7 py-3">
+                    <p class="text-sm text-gray-500">Thank you for your valuable feedback!</p>
+                </div>
+                <div class="items-center px-4 py-3">
+                    <button id="closeModal" class="px-4 py-2 bg-green-500 text-white text-base font-medium rounded-md shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300">
+                        OK
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu functionality
+        document.querySelector('.mobile-menu-button').addEventListener('click', function() {
+            document.querySelector('.mobile-menu').classList.toggle('hidden');
+        });
+
+        // Form submission
+        document.getElementById('feedbackForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            
+            try {
+                const response = await fetch('http://localhost:3000/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    document.getElementById('successModal').classList.remove('hidden');
+                    this.reset();
+                } else {
+                    throw new Error('Something went wrong');
+                }
+            } catch (error) {
+                alert('Error submitting feedback. Please try again.');
+                console.error('Error:', error);
+            }
+        });
+
+        // Modal close button
+        document.getElementById('closeModal').addEventListener('click', function() {
+            document.getElementById('successModal').classList.add('hidden');
+        });
+    </script>
+</body>
+</html> 

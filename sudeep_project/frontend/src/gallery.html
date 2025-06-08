@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tangerine&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro&display=swap" rel="stylesheet">
+<title>Electroride Online EV showroom</title>
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif;}
+html{
+  -ms-text-size-adjust:100%;
+    -webkit-text-size-adjust:100%;}
+body{
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+  /* background: #cccccca3; */
+}
+/* End extract */
+
+html,body{
+    font-family:Verdana,sans-serif;
+    font-size:15px;
+    line-height:1.5;
+}
+
+.ev-bar .ev-button {
+  padding: 16px;
+}
+/* Ev.CSS 4.15 December 2020 by Jan Egil and Borge Refsnes */
+html{
+  box-sizing:border-box;
+}
+*,*:before,*:after{
+  box-sizing:inherit;
+}
+/* Extract from normalize.css by Nicolas Gallagher and Jonathan Neal git.io/normalize */
+
+h1,h2,h3,h4,h5,h6{
+    font-family:"Segoe UI",Arial,sans-serif;
+    font-weight:400;
+    margin: 0;
+}
+.ev-wide{
+    letter-spacing:4px;
+}
+
+.ev-top {
+      position: relative;
+      width: 100%;
+      z-index: 1000;
+    }
+
+/* Style the rest of your navigation bar as needed */
+.ev-bar .ev-button {
+  padding: 16px;
+}
+
+/* Your other styles here */
+
+.ev-btn,.ev-button{
+    border:none;
+    display:inline-block;
+    padding:8px 16px;
+    vertical-align:middle;
+    overflow:hidden;
+    text-decoration:none;
+    color:inherit;
+    background-color:inherit;
+    text-align:center;
+    cursor:pointer;
+    white-space:nowrap;
+}
+
+
+.ev-sidebar{
+    height:100%;
+    width:200px;
+    background-color:rgb(255, 255, 255);
+    position:fixed!important;
+    z-index:1;
+    overflow:auto;
+}
+
+
+.ev-bar-block .ev-bar-item{
+    width:100%;
+    display:block;
+    padding:8px 16px;
+    text-align:left;
+    border:none;
+    white-space:normal;
+    float:none;
+    outline:0;
+    border-bottom: 1px solid;
+}
+
+@media (max-width:1205px){
+    .ev-auto{
+        max-width:95%;
+    }
+}
+@media (max-width:600px)
+{
+  .ev-modal-content
+    {
+        margin:0 10px;width:auto!important;
+    }
+.ev-hide-small{
+    display:none!important;
+}
+}
+@media (max-width:768px){
+    .ev-modal-content{
+        width:500px;
+    }
+    .ev-modal{
+        padding-top:50px;
+    }
+}
+@media (min-width:993px){
+    .ev-modal-content{
+        width:900px;
+    }
+    .ev-hide-large{
+        display:none!important;
+    }
+    .ev-sidebar.ev-collapse{
+        display:block!important;
+    
+    }
+}
+@media (max-width:992px) and (min-width:601px)
+{
+    .ev-hide-medium{
+        display:none!important;
+    }
+}
+@media (max-width:992px){
+    .ev-sidebar.ev-collapse{
+        display:none;
+    }
+    .ev-main{
+        margin-left:0!important;
+        margin-right:0!important;
+    }
+    .ev-auto{
+        max-width:100%;
+    }
+}
+
+.ev-card,.ev-card-2{
+    box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+}
+
+.ev-animate-left{
+    position:relative;
+    animation:ev-animateleft 0.4s;
+}
+@keyframes ev-animateleft{
+    from{
+        left:-300px;opacity:0;
+    }
+     to{
+        left:0;opacity:1;
+    }
+}
+
+
+
+.ev-right {
+   float: right !important;
+   }
+.ev-button:hover { 
+  color: #000 !important;
+   background-color: #ccc !important;
+   }
+.ev-transparent, .ev-hover-none:hover { background-color: transparent !important; }
+.ev-hover-none:hover { box-shadow: none !important; }
+
+.ev-black,
+.ev-hover-black:hover {
+  color: #fff !important;
+  background-color: #000 !important;
+}
+.ev-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)), url('./bg2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.ev-top {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.ev-bar {
+  background-color: white; /* Make the navbar transparent */
+  transition: background-color 0.3s ease; /* Add transition for a smooth effect */
+}
+
+.ev-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white; /* Adjust the color and opacity as needed */
+  z-index: -1;
+}
+.full-gallery {
+  text-align: center;
+}
+
+.full-gallery h1 {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-decoration: underline;
+}
+
+.full-gallery p {
+  margin-left: 50px;
+  margin-right: 50px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.image-gallery {
+  position: relative;
+}
+
+.image-gallery h1 {
+  text-decoration: underline;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 900;
+}
+
+.image-gallery p {
+  font-family: Tahoma, sans-serif;
+  font-size: small;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.complete-gallery{
+  margin-left: 50px;
+  margin-right: 50px;
+  box-sizing: border-box;
+  /* padding: 15px; */
+box-shadow: 0 4px 8px rgba(21, 21, 21, 0.249); 
+  background-color: #fff;
+}
+.inside-gallery{
+  margin-left: 25px;
+}
+.vehicle {
+  display: inline-block;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  border: 1px solid #1b1a1a7b;
+  max-width: 300px;
+  box-sizing: border-box;
+  border-radius: 10px;
+box-shadow: 0 4px 8px rgba(21, 21, 21, 0.249); 
+  background-color: #fff;
+ 
+}
+
+.vehicle img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  margin-bottom: 10px;
+  transition: transform 0.5s ease-in-out;
+}
+
+img:hover {
+  transform: scale(1.05);
+}
+.info {
+  text-align: left;
+  padding: 15px;
+  box-sizing: border-box;
+  background: #5553531d;
+  width: 100%; /* Optional: Set width to 100% for clarity */
+  display: block; /* Ensure it's a block-level element */
+}
+
+h4 {
+  font-size: 19px;
+  margin-bottom: 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
+}
+
+.info span {
+  display: block;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 5px;
+  justify-content: space-evenly;
+}
+
+.info button {
+  padding: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  border: 2px solid #3498db;
+  color: #3498db;
+  background-color: #fff;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+  display: block;
+  margin: 0 auto;
+}
+
+.info a {
+  text-decoration: none;
+}
+
+/* Hover effect */
+button:hover {
+  background-color: #3498db;
+  color: #fff;
+}
+
+footer {
+  background-color: #333; /* Light black background color */
+  color: #fff; /* Text color */
+  padding: 40px 20px; /* Padding for content */
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.quick-info,
+.footer-company,
+.footer-contact,
+.footer-logo {
+  flex: 1;
+  margin-bottom: 20px;
+}
+
+.footer-content h2 {
+  color: #d44b4b; /* Header text color */
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  text-transform: capitalize;
+}
+
+.footer-content ul {
+  list-style: none;
+  padding: 0;
+  display: block;
+}
+
+.footer-content li {
+  margin-bottom: 5px;
+  text-transform: capitalize;
+ 
+}
+
+.footer-content a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  text-transform: capitalize;
+}
+
+.footer-content a:hover {
+  text-decoration: underline;
+}
+
+.address,
+.mail,
+.ph-no {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.social-media {
+  font-size: 1.5em;
+}
+
+/* Additional styling for social media icons */
+i.fa-brands {
+  margin-right: 10px;
+}
+.footer-logo h1{
+  font-family: 'Anonymous Pro', monospace;
+}
+
+.info-content h2{
+font-family: 'Times New Roman', Times, serif;
+font-size: 28px;
+font-weight: 900;
+text-decoration: 2px underline red;
+}
+.info-content p{
+  font-family: serif;
+  font-size: 16px;
+  font-weight: 600;
+}
+.info-content li{
+  font-size: 16px;
+  font-family: serif;
+}
+</style>
+</head>
+<body>
+ <!-- Navbar (sit on top) -->
+ <div class="ev-top">
+    <div class="ev-bar ev-white ev-card" id="myNavbar">
+      <a href="#home" class="ev-bar-item ev-button ev-wide">ELECTRORIDE</a>
+  
+      <!-- Right-sided navbar links -->
+      <div class="ev-right ev-hide-small">
+        <a href="index.html" class="ev-bar-item ev-button">HOME</a>
+  
+        <!-- <a href="#pricing" class="ev-bar-item ev-button"><i class="fa fa-inr"></i>GALLERY&PRICING</a> -->
+        <a href="contact-form.html" class="ev-bar-item ev-button"><i class="fa fa-envelope"></i> CONTACT</a>
+        <a href="feedback.html" class="ev-bar-item ev-button"><i class="fa fa-comment"></i>FEEDBACK</a>
+      </div>
+      <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+  
+      <a href="javascript:void(0)" class="ev-bar-item ev-button ev-right ev-hide-large ev-hide-medium" onclick="ev_open()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+  </div>
+  
+  <nav class="ev-sidebar ev-bar-block ev-black ev-card ev-animate-left ev-hide-medium ev-hide-large" style="display:none" id="mySidebar">
+    <a href="javascript:void(0)" onclick="ev_close()" class="ev-bar-item ev-button ev-large ev-padding-16">Close ×</a>
+    <a href="index.html" onclick="ev_close()" class="ev-bar-item ev-button">HOME</a>
+    <!-- <a href="#pricing" onclick="ev_close()" class="ev-bar-item ev-button">GALLERY&PRICING</a> -->
+    <a href="contact-form.html" onclick="ev_close()" class="ev-bar-item ev-button">CONTACT</a>
+    <a href="feedback.html" onclick="ev_close()" class="ev-bar-item ev-button">FEEDBACK</a>
+  </nav>
+  
+  <script>
+    // Modal Image Gallery
+    function onClick(element) {
+      document.getElementById("img01").src = element.src;
+      document.getElementById("modal01").style.display = "block";
+      var captionText = document.getElementById("caption");
+      captionText.innerHTML = element.alt;
+    }
+    
+    // Toggle between showing and hiding the sidebar when clicking the menu icon
+    var mySidebar = document.getElementById("mySidebar");
+    
+    function ev_open() {
+      if (mySidebar.style.display === 'block') {
+        mySidebar.style.display = 'none';
+      } else {
+        mySidebar.style.display = 'block';
+      }
+    }
+    
+    // Close the sidebar with the close button
+    function ev_close() {
+        mySidebar.style.display = "none";
+    }
+  </script>
+
+  <section class="gallery">
+    <div class="full-gallery">
+        <h1 class="header" style="margin-top: 50px;">
+              Find The Best Match For Your Budget
+        </h1>
+        <p>"Discover the perfect electro-ride within your budget. Our curated selection focuses on delivering exceptional value, highlighting budget-friendly options with optimal features. We conduct a thorough comparative analysis, considering factors like battery life, charging speed, and overall performance. User reviews offer real-world insights, aiding in informed decisions. Explore customization options to tailor your ride while staying cost-effective. Stay updated on exclusive promotions and discounts to maximize affordability. 'Find The Best Match For Your Budget' ensures you not only meet your transportation needs but also make a savvy investment in electric mobility without breaking the bank."</p>
+        </div>
+          <div class="complete-gallery">
+            <div class="inside-gallery">
+          <div class="vehicle">
+            <img src="https:/climatesamurai.com/wp-content/uploads/2023/10/Acer-MUVI-125-4G-E-Scooter.jpeg" alt="Ola S1 Pro">
+            <div class="info">
+              <h4>Ola S1 Pro</h4>
+              <span class="price"> Rs 1.39 - 1.47 Lakh|181 - 195 km/charge|6.5 Hr|120 km/Hr </span>
+             <a href="book-now.html"><button>Book Now</button></a>
+            </div>
+          </div>
+
+<!-- 
+          <div class="vehicle">
+            <img src="" alt="ola s1 air">
+            <div class="info">
+              <h4>Ola S1 Air</h4>
+              <span class="price"><b>Price:</b> Rs. 1.19 Lakh|151 km/charge|5 Hr|90 km/Hr</span>
+              <a href="contact-form.html"><button>Book Now</button></a>
+            </div>
+          </div> -->
+
+           
+          <div class="vehicle">
+            <img src="https:/www.tvsmotor.com/electric-scooters/tvs-iqube/-/media/Vehicles/Feature/Iqube/Variant/TVS-iQube/Color_Images/Pearl-White/PearlWhite-angle.webp" alt="tvs iqube" >
+            <div class="info">
+              <h4>TVS iqube</h4>
+              <span class="price"><b></b>
+                Rs. 1.55 Lakh|
+                4400 | 100 km/charge | 78 km/h</span>
+              <a href="book-now.html"><button>Book Now</button></a>
+            </div>
+          </div>
+ 
+          <div class="vehicle">
+            <img src="https:/www.chetak.com/-/media/chetakv2/content-image/image-series/2903_image.webp" alt="bajaj-chetak" >
+            <div class="info">
+              <h4>Bajaj Chetak</h4>
+              <span class="price">Rs. 1.15 Lakh|200 | 113 km/charge | 63 km/h</span>
+              <a href="book-now.html"><button>Book Now</button></a>
+            </div>
+          </div>
+
+          <div class="vehicle">
+            <img src="https://media.zigcdn.com/media/model/2023/Jan/ather-x-right-side-view_360x240.jpg"  alt="ather 450x">
+            <div class="info">
+              <h4>Ather 450X</h4>
+              <span class="price">Rs. 1.37 Lakh|6400 | 150 km/charge | 90 km/h</span>
+              <a href="book-now.html"><button>Book Now</button></a>
+            </div>
+          </div>
+
+          <div class="vehicle">
+            <img src="https://media.zigcdn.com/media/model/2023/Jun/vida-v1-pro-right-side-view_360x240.jpg"  alt="Vida V1 Pro">
+            <div class="info">
+              <h4>Vida V1 Pro</h4>
+              <span class="price">Rs. 1.45 Lakh|6000 | 110 km/charge | 80 km/h</span>
+              <a href="book-now.html"><button>Book Now</button></a>
+            </div>
+          </div>
+
+          <div class="vehicle">
+            <img src="https://media.zigcdn.com/media/model/2022/Apr/hero-electric-optima-cx-right-side-view_360x240.jpg"  alt="hero electric optima">
+            <div class="info">
+              <h4>Hero Electric Optima</h4>
+              <span class="price">Rs. 1.06 Lakh
+                |
+                1200 | 135 km/charge | 55 km/h</span>
+              <a href="book-now.html"><button>Book Now</button></a>
+            </div>
+          </div>
+
+          <div class="vehicle">
+            <img src="https://media.zigcdn.com/media/model/2023/May/simple-right-side-view_360x240.jpg"  alt="Simple One">
+            <div class="info">
+              <h4>Simple One</h4>
+              <span class="price">Rs. 1.45 Lakh
+              |
+                5 Kwh | 8500 | 212 km/charge</span>
+              <a href="book-now.html"><button>Book Now</button></a>
+            </div>
+          </div>
+
+          <div class="vehicle">
+            <img src="https://media.zigcdn.com/media/model/2023/Aug/tvsx-right-side-view_360x240.jpg"  alt="TVS X">
+            <div class="info">
+              <h4>TVS X</h4>
+              <span class="price">Rs. 2.49 Lakh
+              |
+                7000 | 80 km/charge | 105 km/h</span>
+              <a href="book-now.html"><button>Book Now</button></a>
+            </div>
+          </div>
+
+
+          <div class="vehicle">
+            <img src="https://media.zigcdn.com/media/model/2023/May/yulu-wynn-right-side-view_360x240.jpg"  alt="yulu wynn">
+            <div class="info">
+              <h4>yulu wynn</h4>
+              <span class="price">Rs. 55,555
+               |
+                250 | 25 km/h | Electric</span>
+              <a href="book-now.html"><button>Book Now</button></a>
+            </div>
+          </div>
+
+          <div class="vehicle">
+            <img src="https://media.zigcdn.com/media/model/2023/Apr/ampere-magnus-right-side-view_360x240.jpg"  alt="amphere magnus ex">
+            <div class="info">
+              <h4>Amphere Magnus EX</h4>
+              <span class="price">Rs. 1.04 Lakh
+                |
+                2.29 Kwh | 2100 | 121 km/charge</span>
+              <a href="book-now.html"><button>Book Now</button></a>
+            </div>
+          </div>
+
+          <div class="vehicle">
+            <img src="https://media.zigcdn.com/media/model/2023/Oct/bounce-infiniti-e1-plus-right-side-view_360x240.jpg"  alt="Bounce Infifity E1+">
+            <div class="info">
+              <h4>Bounce Infifity E1+</h4>
+              <span class="price">Rs. 1.12 Lakh
+              |
+                1.9 Kwh | 1500 | 85 km/charge</span>
+              <a href="book-now.html"><button>Book Now</button></a>
+            </div>
+          </div>
+
+          <div class="vehicle">
+            <img src="https://media.zigcdn.com/media/model/2021/Mar/okinawa-praise-pro-asd_360x240.jpg"  >
+            <div class="info">
+              <h4>okinawa Praise Pro</h4>
+              <span class="price">Rs. 99,645
+                |
+                2700 | 81 km/charge | 56 km/h</span>
+              <a href="book-now.html"><button>Book Now</button></a>
+            </div>
+          </div>
+
+          <div class="vehicle">
+            <img src="https://media.zigcdn.com/media/model/2023/Oct/ev-epluto-7g-max-right-side-view_360x240.jpg"  >
+            <div class="info">
+              <h4>PURE EV Epluto 7G Max</h4>
+              <span class="price">
+                Rs. 1.14 Lakh
+               |
+                2200 | 150 km/charge | 60 km/h</span>
+              <a href="book-now.html"><button>Book Now</button></a>
+            </div>
+          </div>
+
+
+          <div class="vehicle">
+            <img src="https://media.zigcdn.com/media/model/2023/Dec/simple-dot-one-right-side-view_360x240.jpg"  >
+            <div class="info">
+              <h4>  Simple Dot One</h4>
+              <span class="price">
+              
+                Rs. 99,999
+            |
+                8500 | 151 km/charge | 105 km/h</span>
+              <a href="book-now.html"><button>Book Now</button></a>
+            </div>
+          </div>
+
+          <div class="vehicle">
+            <img src="https://media.zigcdn.com/media/model/2022/Feb/zing_360x240.jpg"  >
+            <div class="info">
+              <h4> Kinetic Green Zing </h4>
+              <span class="price">
+                Rs. 71,500
+                |
+                250 | 100 km/charge | 45 km/h</span>
+              <a href="book-now.html"><button>Book Now</button></a>
+            </div>
+          </div>
+
+
+          <div class="vehicle">
+            <img src="https://media.zigcdn.com/media/model/2023/Feb/okaya-faast-f-right-side-view_360x240.jpg"  >
+            <div class="info">
+              <h4> Okaya Fast</h4>
+              <span class="price">
+                Rs. 1.24 Lakh
+3.53 Kwh | 2500 | 140 km/charge
+                </span>
+              <a href="book-now.html"><button>Book Now</button></a>
+            </div>
+          </div>
+          <div class="vehicle">
+            <img src="https://media.zigcdn.com/media/model/2021/Dec/epluto-6r-right-side-view_360x240.jpg"  >
+            <div class="info">
+              <h4>  PURE EV Epluto 7G</h4>
+              <span class="price">
+                
+Rs. 89,999
+2200 | 90 km/charge | 60 km/h
+                </span>
+              <a href="book-now.html"><button>Book Now</button></a>
+            </div>
+          </div>
+
+          <div class="vehicle">
+            <img src="https://media.zigcdn.com/media/model/2023/Apr/bgauss-c12i-right-side-view_360x240.jpg"  >
+            <div class="info">
+              <h4> BGauss C12i </h4>
+              <span class="price">
+                Rs. 1.01 Lakh
+                |
+                2500 | 135 km/charge | 50 km/h
+                </span>
+              <a href="book-now.html"><button>Book Now</button></a>
+            </div>
+          </div>
+
+
+          
+          <div class="vehicle">
+            <img src="https://media.zigcdn.com/media/model/2023/Jul/lectrix-2-right-side-view_360x240.jpg"  >
+            <div class="info">
+              <h4> Lectrix EV LXS G 2.0 </h4>
+              <span class="price">
+                
+                Rs. 99,999
+               |
+                1800 | 65 km/charge | 55 km/h
+                </span>
+              <a href="book-now.html"><button>Book Now</button></a>
+            </div>
+          </div>
+          
+          <!-- <div class="vehicle">
+            <img src="https://media.zigcdn.com/media/model/2023/Mar/flex-right-side-view_360x240.jpg"  >
+            <div class="info">
+              <h4>  Kinetic Green Flex</h4>
+              <span class="price">
+                
+               
+Rs. 1.18 Lakh
+|
+1200 | 120 km/charge | 72 km/h
+                </span>
+              <a href="contact-form.html"><button>Book Now</button></a>
+            </div>
+          </div> -->
+      </div>
+</div>
+        </div>
+  </section>
+  
+<footer>
+  <div class="footer-content">
+     
+    <div class="quick-info">
+      <h2>quick services</h2>
+      <ul>
+       <a href="#" <li>Gallery and pricing</li></a>
+        <a href="#"<li>Feedback</li></a>
+        <a href="#"<li>New bikes</li></a>
+        <a href="#"<li>offers</li></a>
+        <a href="#"<li>loan</li></a>
+      </ul>
+    </div>
+    <div class="footer-company">
+    <h2>company</h2>
+    <ul>
+      <a href="#" <li>contact</li></a>
+       <a href="#"<li>About</li></a>
+       <a href="#"<li>Home</li></a>
+     </ul>
+</div>
+<div class="footer-contact">
+  <h2>connect with us</h2>
+  <span class="address"><i class="fa-solid fa-location-dot"></i>Sri siddhartha<br> institute of<br> technology,tumkur.</span>
+  <br>
+  <span class="mail"><i class="fa-regular fa-envelope"></i>electroride@gmail.com</span>
+  <br>
+  <span class="ph-no"><i class="fa-solid fa-phone"></i>+91 1234567890</span>
+</div>
+<div class="footer-logo">
+  <h1>
+    Electroride
+  </h1>
+  <h3>keep in touch</h3><br>
+  <span class="social-media"><i class="fa-brands fa-instagram"></i><i class="fa-brands fa-facebook"></i><i class="fa-brands fa-google"></i><i class="fa-brands fa-twitter"></i><i class="fa-brands fa-pinterest"></i></span>
+</div>
+  </div>
+  <hr style="width: 100%; margin: 0; padding: 0;">
+  <div class="copyright" style="text-align: center; font-family: 'Times New Roman', Times, serif; font-weight: 100;">
+    &copy;2023 Electroride:All rights reserved
+  </div>
+</footer>
+</body>
+</html>

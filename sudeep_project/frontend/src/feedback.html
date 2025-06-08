@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ElectroRide - Feedback Form</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"/>
+  <style>
+    body {
+      background: linear-gradient(to right, #f8fbff, #e9f0fb);
+      font-family: 'Segoe UI', sans-serif;
+      color: #333;
+    }
+
+    .main-container {
+      max-width: 1200px;
+      margin: 60px auto;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+      padding: 40px;
+    }
+
+    .contact-info {
+      background: linear-gradient(135deg, #e0ecff, #f5faff);
+      border-radius: 20px;
+      padding: 30px;
+      height: 100%;
+    }
+
+    .contact-info h4 {
+      font-weight: 700;
+      color: #1a237e;
+    }
+
+    .contact-info p i {
+      color: #0d6efd;
+      margin-right: 10px;
+    }
+
+    .social-icons a {
+      font-size: 1.3rem;
+      margin-right: 15px;
+      color: #0d6efd;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: #063a9b;
+      transform: scale(1.1);
+    }
+
+    form .form-control,
+    form .form-select {
+      border-radius: 12px;
+      border: 1px solid #ccd9f0;
+      padding: 12px;
+      background-color: #f9fbfe;
+      transition: 0.3s;
+    }
+
+    form .form-control:focus,
+    form .form-select:focus {
+      border-color: #0d6efd;
+      background-color: #ffffff;
+      box-shadow: 0 0 0 0.15rem rgba(13, 110, 253, 0.2);
+    }
+
+    h3.mb-4 {
+      font-weight: 700;
+      color: #1a237e;
+    }
+
+    button.btn-primary {
+      border-radius: 10px;
+      padding: 12px 28px;
+      background: linear-gradient(to right, #0d6efd, #438afc);
+      border: none;
+      transition: background 0.3s ease;
+    }
+
+    button.btn-primary:hover {
+      background: linear-gradient(to right, #063a9b, #3b77e0);
+    }
+
+    .modal-content {
+      border-radius: 15px;
+    }
+
+    .modal-header {
+      background-color: #e9f1ff;
+      border-bottom: none;
+      border-radius: 15px 15px 0 0;
+    }
+
+    .modal-footer {
+      border-top: none;
+      background-color: #f9fbfe;
+      border-radius: 0 0 15px 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container main-container">
+    <div class="row g-4">
+      <!-- Contact Info Section -->
+      <div class="col-md-4 contact-info">
+        <h4>Get in Touch</h4>
+        <p><i class="bi bi-geo-alt-fill"></i>123 Electric Avenue, Bangalore, India</p>
+        <p><i class="bi bi-telephone-fill"></i>+91 123 456 7890</p>
+        <p><i class="bi bi-envelope-fill"></i>contact@electroride.com</p>
+        <p><i class="bi bi-clock-fill"></i>Mon-Sat: 9:00 AM - 7:00 PM</p>
+
+        <hr class="my-4"/>
+
+        <h6>About Our Project</h6>
+        <p>
+          ElectroRide is an innovative online EV scooter platform promoting clean, smart transportation. 
+          We help users explore models, book rides, and share their experience through digital feedback.
+        </p>
+
+        <div class="social-icons mt-4">
+          <a href="#"><i class="bi bi-facebook"></i></a>
+          <a href="#"><i class="bi bi-twitter"></i></a>
+          <a href="#"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+
+      <!-- Feedback Form Section -->
+      <div class="col-md-8">
+        <h3 class="mb-4">EV Experience Feedback</h3>
+        <form id="feedbackForm">
+          <div class="mb-3">
+            <label for="name" class="form-label">Name *</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email *</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+          </div>
+          <div class="mb-3">
+            <label for="experience" class="form-label">How was your experience with electric vehicles? *</label>
+            <select class="form-select" id="experience" name="experience" required>
+              <option value="">Select your experience</option>
+              <option value="Excellent">Excellent</option>
+              <option value="Good">Good</option>
+              <option value="Average">Average</option>
+              <option value="Poor">Poor</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="scooterModel" class="form-label">Which EV model did you use? *</label>
+            <input type="text" class="form-control" id="scooterModel" name="scooterModel" required>
+          </div>
+          <div class="mb-3">
+            <label for="recommend" class="form-label">Would you recommend EVs to others? *</label>
+            <select class="form-select" id="recommend" name="recommend" required>
+              <option value="">Choose an option</option>
+              <option value="Definitely">Definitely</option>
+              <option value="Maybe">Maybe</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="satisfaction" class="form-label">Rate your satisfaction (1-10) *</label>
+            <input type="number" class="form-control" id="satisfaction" name="satisfaction" min="1" max="10" required>
+          </div>
+          <div class="mb-3">
+            <label for="improvements" class="form-label">What improvements would you suggest?</label>
+            <textarea class="form-control" id="improvements" name="improvements" rows="3"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="contactPreference" class="form-label">Preferred contact method</label>
+            <select class="form-select" id="contactPreference" name="contactPreference">
+              <option value="">Choose your preference</option>
+              <option value="email">Email</option>
+              <option value="phone">Phone</option>
+              <option value="none">No contact needed</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="comments" class="form-label">Additional Comments</label>
+            <textarea class="form-control" id="comments" name="comments" rows="3"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="hearAboutUs" class="form-label">How did you hear about us?</label>
+            <select class="form-select" id="hearAboutUs" name="hearAboutUs">
+              <option value="">Select an option</option>
+              <option value="Social Media">Social Media</option>
+              <option value="Friend">Friend/Family</option>
+              <option value="Advertisement">Advertisement</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Submit Feedback</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success Modal -->
+  <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Success!</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Thank you for your feedback! Your response has been recorded.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('feedbackForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const formData = new FormData(this);
+      const data = Object.fromEntries(formData.entries());
+      
+      try {
+        const response = await fetch('http://localhost:5000/api/feedback', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+          const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+          successModal.show();
+          this.reset();
+        } else {
+          const errorData = await response.json();
+          throw new Error(errorData.error || 'Something went wrong');
+        }
+      } catch (error) {
+        alert('Error submitting feedback: ' + error.message);
+        console.error('Error:', error);
+      }
+    });
+  </script>
+</body>
+</html>

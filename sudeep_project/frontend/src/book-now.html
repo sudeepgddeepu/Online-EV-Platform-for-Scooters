@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your EV - Electroride</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .booking-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .booking-form {
+            display: grid;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        label {
+            font-weight: 600;
+            color: #333;
+        }
+
+        input, select, textarea {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .submit-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+
+        .submit-btn:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            color: #4CAF50;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e8f5e9;
+            border-radius: 5px;
+        }
+
+        .error-message {
+            display: none;
+            text-align: center;
+            color: #f44336;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #ffebee;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="booking-container">
+        <h1>Book Your EV</h1>
+        <form id="bookingForm" class="booking-form">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="vehicleModel">Vehicle Model</label>
+                <select id="vehicleModel" name="vehicleModel" required>
+                    <option value="">Select a model</option>
+                    <option value="Ola S1">Ola S1</option>
+                    <option value="Ola S1 Pro">Ola S1 Pro</option>
+                    <option value="Ola S1 Air">Ola S1 Air</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="bookingDate">Preferred Date</label>
+                <input type="date" id="bookingDate" name="bookingDate" required>
+            </div>
+
+            <div class="form-group">
+                <label for="preferredTime">Preferred Time</label>
+                <select id="preferredTime" name="preferredTime" required>
+                    <option value="">Select time</option>
+                    <option value="Morning (9 AM - 12 PM)">Morning (9 AM - 12 PM)</option>
+                    <option value="Afternoon (12 PM - 3 PM)">Afternoon (12 PM - 3 PM)</option>
+                    <option value="Evening (3 PM - 6 PM)">Evening (3 PM - 6 PM)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address</label>
+                <textarea id="address" name="address" rows="3" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" id="city" name="city" required>
+            </div>
+
+            <div class="form-group">
+                <label for="paymentMethod">Payment Method</label>
+                <select id="paymentMethod" name="paymentMethod" required>
+                    <option value="">Select payment method</option>
+                    <option value="Credit Card">Credit Card</option>
+                    <option value="Debit Card">Debit Card</option>
+                    <option value="UPI">UPI</option>
+                    <option value="Net Banking">Net Banking</option>
+                </select>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">Book Now</button>
+        </form>
+
+        <div id="loading" class="loading">
+            <i class="fas fa-spinner fa-spin"></i> Processing your booking...
+        </div>
+
+        <div id="successMessage" class="success-message">
+            Booking successful! We'll contact you shortly.
+        </div>
+
+        <div id="errorMessage" class="error-message">
+            An error occurred. Please try again.
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const bookingForm = document.getElementById('bookingForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const loading = document.getElementById('loading');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+
+            // Set minimum date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('bookingDate').min = today;
+
+            bookingForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // Show loading state
+                submitBtn.disabled = true;
+                loading.style.display = 'block';
+                successMessage.style.display = 'none';
+                errorMessage.style.display = 'none';
+
+                const formData = {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    vehicleModel: document.getElementById('vehicleModel').value,
+                    bookingDate: document.getElementById('bookingDate').value,
+                    preferredTime: document.getElementById('preferredTime').value,
+                    address: document.getElementById('address').value,
+                    city: document.getElementById('city').value,
+                    paymentMethod: document.getElementById('paymentMethod').value
+                };
+
+                try {
+                    const response = await fetch('http://localhost:5000/api/bookings', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formData)
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        successMessage.style.display = 'block';
+                        bookingForm.reset();
+                    } else {
+                        throw new Error(data.error || 'Failed to submit booking');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    errorMessage.textContent = error.message;
+                    errorMessage.style.display = 'block';
+                } finally {
+                    submitBtn.disabled = false;
+                    loading.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

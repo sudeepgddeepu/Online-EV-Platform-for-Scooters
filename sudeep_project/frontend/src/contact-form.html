@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <title>Contact Us - Electroride</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #dbeafe;
+            --success-color: #059669;
+            --error-color: #dc2626;
+            --text-primary: #1f2937;
+            --text-secondary: #4b5563;
+            --background-light: #f3f4f6;
+            --background-white: #ffffff;
+            --border-color: #e5e7eb;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --radius-sm: 0.375rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-primary);
+            background: var(--background-light);
+            line-height: 1.5;
+        }
+
+        .ev-top {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .ev-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 2rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .ev-bar .ev-button {
+            padding: 0.75rem 1.25rem;
+            border-radius: var(--radius-md);
+            font-weight: 500;
+            transition: all 0.2s ease;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .ev-bar .ev-button:hover {
+            background: var(--accent-color);
+            color: var(--primary-color);
+        }
+
+        .ev-wide {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--primary-color);
+        }
+
+        .contact-container {
+            max-width: 1280px;
+            margin: 6rem auto 2rem;
+            padding: 2rem;
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .contact-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .contact-header p {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            background: var(--background-white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            padding: 2rem;
+        }
+
+        .contact-info {
+            background: var(--primary-light);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+        }
+
+        .contact-info h2 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .contact-details {
+            margin-bottom: 2rem;
+        }
+
+        .contact-details p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .contact-details i {
+            margin-right: 1rem;
+            color: var(--primary-color);
+            font-size: 1.25rem;
+            width: 24px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            transition: color 0.2s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .contact-form {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            font-family: inherit;
+            font-size: 1rem;
+            color: var(--text-primary);
+            background: var(--background-white);
+            transition: all 0.2s ease;
+        }
+
+        .form-group input:hover,
+        .form-group select:hover,
+        .form-group textarea:hover {
+            border-color: var(--primary-color);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px var(--primary-light);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.875rem 1.5rem;
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .submit-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 1rem;
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            border-radius: var(--radius-md);
+            margin-top: 1rem;
+            color: var(--success-color);
+        }
+
+        .error-message {
+            display: none;
+            text-align: center;
+            padding: 1rem;
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            border-radius: var(--radius-md);
+            margin-top: 1rem;
+            color: var(--error-color);
+        }
+
+        .ev-button.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                padding: 1.5rem;
+            }
+
+            .ev-bar {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .ev-right {
+                margin-top: 1rem;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="ev-top">
+        <div class="ev-bar">
+            <a href="index3.html" class="ev-wide">ELECTRORIDE</a>
+            <div class="ev-right">
+                <a href="index.html" class="ev-button">HOME</a>
+                <a href="gallery.html" class="ev-button">GALLERY</a>
+                <a href="contact.html" class="ev-button active">CONTACT</a>
+                <a href="feedback.html" class="ev-button">FEEDBACK</a>
+                <a href="book-now.html" class="ev-button">BOOKING</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="contact-container">
+        <div class="contact-header">
+            <h1>Contact Us</h1>
+            <p>We'd love to hear from you</p>
+        </div>
+
+        <div class="contact-content">
+            <div class="contact-info">
+                <h2>Get in Touch</h2>
+                <div class="contact-details">
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Electric Avenue, Bangalore, India</p>
+                    <p><i class="fas fa-phone"></i> +91 123 456 7890</p>
+                    <p><i class="fas fa-envelope"></i> contact@electroride.com</p>
+                    <p><i class="fas fa-clock"></i> Mon-Sat: 9:00 AM - 7:00 PM</p>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="vehicle">Vehicle Model</label>
+                        <select id="vehicle" name="vehicle" required>
+                            <option value="">Select your vehicle</option>
+                            <option value="ola-s1-pro">Ola S1 Pro</option>
+                            <option value="ola-s1-air">Ola S1 Air</option>
+                            <option value="ather-450x">Ather 450X</option>
+                            <option value="ather-450s">Ather 450S</option>
+                            <option value="tvs-iqube">TVS iQube</option>
+                            <option value="tvs-iqube-s">TVS iQube S</option>
+                            <option value="bajaj-chetak">Bajaj Chetak</option>
+                            <option value="hero-vida">Hero VIDA</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <select id="city" name="city" required>
+                            <option value="">Select your city</option>
+                            <option value="bangalore">Bangalore</option>
+                            <option value="mumbai">Mumbai</option>
+                            <option value="delhi">Delhi</option>
+                            <option value="chennai">Chennai</option>
+                            <option value="hyderabad">Hyderabad</option>
+                            <option value="kolkata">Kolkata</option>
+                            <option value="pune">Pune</option>
+                            <option value="ahmedabad">Ahmedabad</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="preferredContactTime">Preferred Contact Time</label>
+                        <select id="preferredContactTime" name="preferredContactTime" required>
+                            <option value="">Select preferred time</option>
+                            <option value="morning-1">Morning (9:00 AM - 10:00 AM)</option>
+                            <option value="morning-2">Morning (10:00 AM - 11:00 AM)</option>
+                            <option value="morning-3">Morning (11:00 AM - 12:00 PM)</option>
+                            <option value="afternoon-1">Afternoon (12:00 PM - 1:00 PM)</option>
+                            <option value="afternoon-2">Afternoon (1:00 PM - 2:00 PM)</option>
+                            <option value="afternoon-3">Afternoon (2:00 PM - 3:00 PM)</option>
+                            <option value="afternoon-4">Afternoon (3:00 PM - 4:00 PM)</option>
+                            <option value="evening-1">Evening (4:00 PM - 5:00 PM)</option>
+                            <option value="evening-2">Evening (5:00 PM - 6:00 PM)</option>
+                            <option value="evening-3">Evening (6:00 PM - 7:00 PM)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" id="otherCityGroup" style="display: none;">
+                        <label for="otherCity">Please specify your city</label>
+                        <input type="text" id="otherCity" name="otherCity">
+                    </div>
+
+                    <div class="form-group" id="otherVehicleGroup" style="display: none;">
+                        <label for="otherVehicle">Please specify your vehicle model</label>
+                        <input type="text" id="otherVehicle" name="otherVehicle">
+                    </div>
+
+                    <div class="form-group">
+                        <textarea id="message" name="message" placeholder="Your Message" maxlength="1000"></textarea>
+                        <div id="charCounter" style="text-align:right; font-size:0.9rem;">0/1000 characters</div>
+
+                    </div>
+
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+
+                <div id="successMessage" class="success-message">
+                    Thank you for contacting us! We'll get back to you soon.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Handle "Other" fields
+            const city = document.getElementById('city');
+            const vehicle = document.getElementById('vehicle');
+            
+            if (city.value === 'other') {
+                city.value = document.getElementById('otherCity').value;
+            }
+            
+            if (vehicle.value === 'other') {
+                vehicle.value = document.getElementById('otherVehicle').value;
+            }
+            
+            document.getElementById('successMessage').style.display = 'block';
+            this.reset();
+            document.getElementById('otherCityGroup').style.display = 'none';
+            document.getElementById('otherVehicleGroup').style.display = 'none';
+        });
+
+        // Add character counter functionality
+        const textarea = document.getElementById('message');
+        const counter = document.getElementById('charCounter');
+
+        textarea.addEventListener('input', function () {
+        const remaining = this.value.length;
+        const maxLength = this.maxLength;
+        counter.textContent = `${remaining}/${maxLength} characters`;
+        });
+
+        
+
+        // Handle "Other" options
+        document.getElementById('city').addEventListener('change', function() {
+            const otherCityGroup = document.getElementById('otherCityGroup');
+            otherCityGroup.style.display = this.value === 'other' ? 'block' : 'none';
+            if (this.value !== 'other') {
+                document.getElementById('otherCity').value = '';
+            }
+        });
+
+        document.getElementById('vehicle').addEventListener('change', function() {
+            const otherVehicleGroup = document.getElementById('otherVehicleGroup');
+            otherVehicleGroup.style.display = this.value === 'other' ? 'block' : 'none';
+            if (this.value !== 'other') {
+                document.getElementById('otherVehicle').value = '';
+            }
+        });
+    </script>
+</body>
+</html> 
